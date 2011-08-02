@@ -100,14 +100,14 @@ app.get('/createAccount', function(req, res) {
 	res.render('index', {});
 });
 
-app.get('/authSuccess', function(req, res) {
+app.get('/authCallback', function(req, res) {
 	//SAVE THE TOKEN
 	console.log("GOT HERE");
 	res.redirect('/close.html');
 });
 
-app.get('/authFinished', function(req, res) {
-	res.render('authFinished', {});
+app.get('/authSuccess', function(req, res) {
+	res.render('authSuccess', {});
 });
 
 app.get('/room/:id', function(req, res) {
