@@ -167,9 +167,8 @@ app.listen(80);
 var rt = {};
 
 rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterData) {
-	console.log("GET HERE");
 	client.mget('users:' + twitterData.id_str, function(err, replies) {
-		console.log("GET HERE");
+		console.log("GET OVER HERE");
 		if (err) {
 			console.log("User id "+twitterData.id_str+" not found. Creating account.");
 		
@@ -188,6 +187,8 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 				return;
 			});
 		} else {
+			console.log(console.log(replies[0]));
+			
 			promise.fulfill(replies[0]);
 			return;
 		}
