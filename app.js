@@ -19,6 +19,9 @@ client.on("error", function(err) {
 	console.log("Error" + err);
 });
 
+//on changing - remember to change in: (twitter oauth)
+var SERVERURL = "http://ec2-67-202-30-240.compute-1.amazonaws.com/";
+
 /*
  *   OAUTH INFO
  */
@@ -76,13 +79,13 @@ var postCount = 0;
 var threadCount = 0;
 
 client.mget('postCount', function(err, replies) {
-	if (!err) {
+	if (!err && replies[0] !== null) {
 		postCount = replies[0];
 	}
 });
 
 client.mget('threadCount', function(err, replies) {
-	if (!err) {
+	if (!err && replies[0] !== null) {
 		threadCount = replies[0];
 	}
 });
@@ -110,7 +113,11 @@ app.get('/createAccount', function(req, res) {
 });
 
 app.get('/authSuccess', function(req, res) {
-	res.render('authSuccess', {});
+	
+	
+	res.render('authSuccess', {
+		serverURL = SERVERURL;
+	});
 });
 
 /*	gets room's post list with :(room)id
@@ -173,12 +180,11 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 			console.log("Some sort of database error occured.");
 			promise.fail(err);
 			return;
-		} else { //if (replies[0] === null) { //not found in the database
-			console.log("User id "+twitterData.id_str+" not found. Creating account.");
-
+		} else if (replies[0] === null) { //not found in the database
 			var newUser = new rt.User(twitterData.name, twitterData.screen_name, 
 				accessToken, accessTokenSecret);	
 
+			console.log("User id "+twitterData.id_str+" not found. Creating account.");
 			console.log(newUser);
 
 			client.set('users:' + twitterData.id_str, JSON.stringify(newUser), function(err) {
@@ -190,11 +196,11 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 				promise.fulfill(newUser);
 				return;
 			});
-		} // else { //found in database
-		// 			console.log("replies: "+replies[0]);
-		// 			promise.fulfill(replies[0]);
-		// 			return;
-		// 		}
+		} else { //found in database
+			console.log("Found user: "+replies[0]);
+			promise.fulfill(JSON.parse(replies[0])s);
+			return;
+		}
 	});
 	
 	//promise.fail("Unknown error.");
