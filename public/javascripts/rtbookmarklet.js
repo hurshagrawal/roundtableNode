@@ -141,15 +141,14 @@ function runthis() {
 		} 
 	}
 	
-	
+	//encode selected text and put in URL
 	rt.t = getSelectedText();	
 	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.userID +"&c=" + $.base64Encode(rt.t);
 
-	console.log("rt.iframe_url = "+rt.iframe_url);
-	
+	//show iframe if already exists
 	rt.iframe = $('#roundtable_iframe');
 	if (rt.iframe.length) { //if frame exists
-		$('#roundtable_iframe').show(2);
+		$('#roundtable_iframe').fadeIn("slow");
 			// if has text selected, copy into iframe
 		if (rt.t != "") {
 			rt.iframe.src = rt.iframe_url;
@@ -164,18 +163,13 @@ function runthis() {
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
 		'stylesheets/iframe.css" type="text/css" media="screen" title="no title" charset="utf-8">';
 	
-	$("head").append(rt.stylesheet);
-
-	$("body").append('<div id="roundtable_iframe"></div>');
-	console.log(9);
-	
 	rt.str = "";
 	rt.str += "<iframe frameborder='0' scrolling='no' name='roundtable_iframe' id='roundtable_iframe' src='" + rt.iframe_url;
 	rt.str += "' width='"+rt.boxwidth+"' height='"+rt.boxheight+"' style='text-align: center; background-color: white;'></iframe>";
 	
-	rt.iframe = $("#roundtable_iframe");
-	
-	rt.iframe.hide().append(rt.str).hide().fadeIn(2);
-	
+	//append div and div stylesheet to body
+	$("head").append(rt.stylesheet);
+	$("body").append('<div id="roundtable_iframe"></div>');
+	$("#roundtable_iframe").hide().append(rt.str).fadeIn("slow")l
 
 }
