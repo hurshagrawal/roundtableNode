@@ -139,7 +139,7 @@ function runthis() {
 		rt.t = document.selection.createRange().text;
 	}
 
-	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(rt.t);
+	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(rt.t.toString());
 
 	rt.iframe = $('#roundtable_iframe');
 	if (rt.iframe) { //if frame exists
