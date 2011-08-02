@@ -11,6 +11,7 @@ var express 	= require('express'),
 	client		= redis.createClient(),
 	RedisStore 	= require('connect-redis')(express),
 	fugue		= require('fugue'),
+	util		= require('util'),
 	everyauth	= require('everyauth');
 
 client.on("error", function(err) {
@@ -26,7 +27,7 @@ everyauth.twitter
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
 	.findOrCreateUser( function (session, accessToken, accessTokenSecret, data) {
 		console.log("THIS IS CALLED");
-		console.log(data);
+		console.log(util.inspect.data);
 	})
 	.redirectPath('/');
 	
