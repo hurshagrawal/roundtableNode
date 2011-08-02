@@ -177,6 +177,7 @@ function runthis() {
 	
 	rt.iframe.append(rt.str);
 	rt.iframe.keypress( function(e) {
+		console.log(e);
 		if (e.which == 27 ) {
 			rt.iframe.hide(2);
 		}
