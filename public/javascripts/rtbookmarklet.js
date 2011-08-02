@@ -155,6 +155,7 @@ function runthis() {
 		} else {
 			// want to set focus back to that item! but can't - access denied
 		}
+		return;
 	}
 	
 	rt.boxheight = 400;
