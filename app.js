@@ -101,6 +101,7 @@ app.get('/createAccount', function(req, res) {
 
 app.get('/auth/twitter/callback', function(req, res) {
 	//SAVE THE TOKEN
+	console.log("GOT HERE");
 	res.redirect('/close.html');
 });
 
@@ -147,5 +148,5 @@ everyauth.helpExpress(app);
 //app.listen(80);
 
 fugue.start(app, 80, null, 2, {
-	verbose: true
+	verbose: false
 });
