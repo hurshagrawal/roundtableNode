@@ -145,7 +145,7 @@ function runthis() {
 	if (rt.iframe) { //if frame exists
 		$('#roundtable_iframe').show(2);
 			// if has text selected, copy into iframe
-		if (t != "") {
+		if (rt.t != "") {
 			rt.iframe.src = rt.iframe_url;
 		} else {
 			// want to set focus back to that item! but can't - access denied
