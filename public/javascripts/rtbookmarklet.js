@@ -131,17 +131,19 @@ function runthis() {
 	 */
 	
 	//get selected text
-	rt.t = '';
-	if (window.getSelection) {
-		rt.t = window.getSelection();
-	} else if (document.getSelection) {
-		rt.t = document.getSelection();
-	} else if (document.selection) {
-		rt.t = document.selection.createRange().text;
+	function getSelectedText(){ 
+		if (window.getSelection) { 
+			return window.getSelection().toString(); 
+		} else if (document.getSelection) { 
+			return document.getSelection(); 
+		} else if (document.selection) { 
+			return document.selection.createRange().text; 
+		} 
 	}
 	
-	rt.t = rt.t.toString();	
-	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(rt.t);
+	
+	rt.t = getSelectedText();	
+	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.userID +"&c=" + $.base64Encode(rt.t);
 
 	console.log("rt.iframe_url = "+rt.iframe_url);
 	
