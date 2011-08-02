@@ -25,7 +25,6 @@ everyauth.twitter
 	.consumerKey('8zq12b5WobtJkU5WG2NqA')
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
 	.findOrCreateUser( function (session, accessToken, accessTokenSecret, data) {
-		console.log("Here");
 	})
 	.redirectPath('/');
 	
@@ -101,14 +100,14 @@ app.get('/createAccount', function(req, res) {
 	res.render('index', {});
 });
 
-app.get('/auth/twitter/callback', function(req, res) {
+app.get('/authSuccess', function(req, res) {
 	//SAVE THE TOKEN
 	console.log("GOT HERE");
 	res.redirect('/close.html');
 });
 
-app.get('/authSuccess', function(req, res) {
-	res.render('authSuccess', {});
+app.get('/authFinished', function(req, res) {
+	res.render('authFinished', {});
 });
 
 app.get('/room/:id', function(req, res) {
