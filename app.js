@@ -28,8 +28,7 @@ everyauth.twitter
 	.findOrCreateUser( function (session, accessToken, accessTokenSecret, data) {
 		console.log("THIS IS CALLED");
 		console.log(util.inspect.data);
-	})
-	.redirectPath('/');
+	});
 	
 /*
  *   CONFIGURATION
