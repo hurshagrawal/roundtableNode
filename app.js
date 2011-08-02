@@ -29,7 +29,7 @@ everyauth.twitter
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
 	.findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterData) {
 		console.log("THIS IS CALLED");
-		console.log(util.inspect.twitterData);
+		console.log(util.inspect(twitterData));
 	})
 	.redirectPath('/close.html');
 	
