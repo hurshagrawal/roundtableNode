@@ -2,7 +2,9 @@
 	border: 12px solid black;
 	position:absolute;
 	top: 50px; 
-	left: 200px; 
+	left: 200px;
+	height: 400;
+	width: 700;
 	z-index: 10000000;
 	padding: 0;
 	background: white;

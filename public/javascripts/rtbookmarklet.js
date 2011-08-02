@@ -188,7 +188,7 @@ function runthis() {
 	
 	//append div and div stylesheet to body
 	$("head").append(rt.stylesheet);
-	$("body").append('<div id="roundtable_div" style="width:'+rt.boxwidth+', height:'+rt.boxheight+'"></div>');
+	$("body").append('<div id="roundtable_div"></div>');
 	
 	
 	rt.iframe = $("#roundtable_div");
