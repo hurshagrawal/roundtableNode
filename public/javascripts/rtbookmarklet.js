@@ -162,8 +162,10 @@ function runthis() {
 	rt.boxheight = 400;
 	rt.boxwidth = 700;
 	
-	$("head").append('<link rel="stylesheet" href="'+ rt.SERVERURL + '/stylesheets/iframe.css" '+
-		'type="text/css" media="screen" title="no title" charset="utf-8">');
+	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
+		'/stylesheets/iframe.css" type="text/css" media="screen" title="no title" charset="utf-8">';
+	
+	$("head").append(rt.stylesheet);
 
 	$("body").append('<div id="roundtable_iframe"></div>');
 	console.log(9);
