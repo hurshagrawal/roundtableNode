@@ -22,6 +22,8 @@ client.on("error", function(err) {
  *   OAUTH INFO
  */
 
+everyauth.debug = true;
+
 everyauth.twitter
 	.consumerKey('8zq12b5WobtJkU5WG2NqA')
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
@@ -33,17 +35,7 @@ everyauth.twitter
 /*
  *   CONFIGURATION
  */
-var app = module.exports = express.createServer(
-		express.bodyParser(),
-		express.methodOverride(),
-		express.cookieParser(),
-		express.session({ 
-			store: new RedisStore({}), 
-			secret: 'paneldiscussions' 
-		}),
-		express.static(__dirname + '/public'),
-		everyauth.middleware()
-	);
+var app = module.exports = express.createServer();
 
 app.configure(function() {
 	app.use(express.bodyParser());
