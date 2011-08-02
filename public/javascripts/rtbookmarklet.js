@@ -148,7 +148,7 @@ function runthis() {
 	console.log("rt.iframe_url = "+rt.iframe_url);
 	
 	rt.iframe = $('#roundtable_iframe');
-	if (rt.iframe) { //if frame exists
+	if (rt.iframe.length) { //if frame exists
 		$('#roundtable_iframe').show(2);
 			// if has text selected, copy into iframe
 		if (rt.t != "") {
@@ -156,7 +156,6 @@ function runthis() {
 		} else {
 			// want to set focus back to that item! but can't - access denied
 		}
-		return;
 	}
 	
 	rt.boxheight = 400;
