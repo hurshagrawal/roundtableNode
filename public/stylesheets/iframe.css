@@ -4,8 +4,12 @@
 	top: 50px; 
 	left: 200px;
 	height: 400;
-	width: 700;
+	width: 500;
 	z-index: 10000000;
 	padding: 0;
 	background: white;
+}
+
+#roundtable_div:hover {
+	cursor: move;
 }
