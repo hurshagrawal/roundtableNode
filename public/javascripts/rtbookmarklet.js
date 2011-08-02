@@ -2,18 +2,36 @@ rt.SERVERURL = "http://ec2-67-202-30-240.compute-1.amazonaws.com/";
 
 //Load JQuery, then call runthis();
 (function() {
+		
 	if (typeof jQuery == 'undefined') {
 		var jQ = document.createElement('script');
 		jQ.type = 'text/javascript';
-		jQ.onload=runthis;
+		jQ.onload=checkForJQ_UI;
 		jQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
 		document.body.appendChild(jQ);
 	} else {
-		runthis();
+		checkForJQ_UI();
 	}
 })();
 
+function checkForJQ_UI() {
+	if (!jQuery.ui) {
+		var jQ_UI = document.createElement('script');
+		jQ_UI.type = 'text/javascript';
+		jQ_UI.onload=runthis;
+		jQ_UI.src = ' https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js';
+		document.body.appendChild(jQ_UI);
+	} else {
+		runthis();
+	}
+}
+
 function runthis() {
+	//appends JQuery UI to doc
+	var jQ_UI = document.createElement('script');
+	jQ_UI.type = 'text/javascript';
+	jQ_UI.src = ' https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js';
+	document.body.appendChild(jQ_UI);
 	
 	/**
 	* jQuery BASE64 functions
@@ -176,5 +194,6 @@ function runthis() {
 	rt.iframe = $("#roundtable_div");
 	rt.iframe.hide();
 	rt.iframe.append(rt.str).fadeIn();
+	rt.iframe.draggable();
 
 }
