@@ -116,7 +116,7 @@ app.get('/authSuccess', function(req, res) {
 	
 	
 	res.render('authSuccess', {
-		serverURL = SERVERURL
+		serverURL: SERVERURL
 	});
 });
 
