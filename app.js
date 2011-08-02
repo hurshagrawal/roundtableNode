@@ -154,11 +154,11 @@ app.post('createRoom', function(req, res) {
  */
 
 everyauth.helpExpress(app);
-//app.listen(80);
-
-fugue.start(app, 80, null, 2, {
-	verbose: false
-});
+app.listen(80);
+// 
+// fugue.start(app, 80, null, 2, {
+// 	verbose: true
+// });
 
 
 
