@@ -23,7 +23,7 @@ client.on("error", function(err) {
  *   CONSTANTS
  */
 
-//on changing - remember to change in: (twitter oauth)
+//on changing - remember to change in: (twitter oauth, bookmarklet JS)
 var SERVERURL = "http://ec2-67-202-30-240.compute-1.amazonaws.com/";
 var DEBUG = true;
 
