@@ -201,9 +201,9 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 };
 
 rt.User = function(name, twitterHandle, accessToken, accessTokenSecret) {
-	name = this.name,
-	twitterHandle = this.twitterHandle,
-	accessToken = this.accessToken,
-	accessTokenSecret = this.accessTokenSecret,
-	timeCreated = new Date()
+	this.name = name;
+	this.twitterHandle = twitterHandle;
+	this.accessToken = accessToken;
+	this.accessTokenSecret = accessTokenSecret;
+	this.timeCreated = new Date();
 };
