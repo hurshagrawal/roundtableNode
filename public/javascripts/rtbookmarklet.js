@@ -170,6 +170,10 @@ function runthis() {
 	//append div and div stylesheet to body
 	$("head").append(rt.stylesheet);
 	$("body").append('<div id="roundtable_iframe"></div>');
-	$("#roundtable_iframe").hide().append(rt.str).fadeIn("slow")l
+	
+	
+	rt.iframe = $("#roundtable_iframe");
+	rt.iframe.hide();
+	rt.iframe.append(rt.str).fadeIn("slow");
 
 }
