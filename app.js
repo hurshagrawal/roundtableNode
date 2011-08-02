@@ -93,11 +93,16 @@ app.get('/', function(req, res) {
 });
 
 
+/*	links to createAccount page
+	-->opens twitter authentication window
+		-->returns to authCallback -->(create entry, save token, create bookmarklet)
+			-->closes window
+				--> redirects main page to authSuccess -->(show bookmarklet)
+
+*/
 app.get('/createAccount', function(req, res) {
-	//(1)Creates acct in db
-	//(2)authenticates with twitter
-	//(3)creates bookmarklet dynamically for user
-	res.render('index', {});
+
+	res.render('createAccount', {});
 });
 
 app.get('/authCallback', function(req, res) {
@@ -110,11 +115,14 @@ app.get('/authSuccess', function(req, res) {
 	res.render('authSuccess', {});
 });
 
+/*	gets room's post list with :(room)id
+	--> gets posts related to that room
+		--> renders view (intricacies with if logged in editable, else viewable)
+
+
+
+*/
 app.get('/room/:id', function(req, res) {
-	//(1)gets room info (posts)
-	//(2)gets posts
-	//(3)renders posts
-	
 	step(
 		function getPostsForRoom() {
 			//client.mget("rooms:" + req.params.id, , );
@@ -122,12 +130,13 @@ app.get('/room/:id', function(req, res) {
 	);
 });
 
-
 app.post('/submitPost', function(req, res) {
 	//(1)Add post to db
 	//(2)Push post out via sockets
 });
 
+/*  LATER - user has a history page of all posts
+ */
 app.get('/user/:id', function(req, res) {
 	
 });
@@ -151,3 +160,11 @@ everyauth.helpExpress(app);
 fugue.start(app, 80, null, 2, {
 	verbose: false
 });
+
+
+
+/*
+ *    HELPER FUNCTIONS
+ */
+
+var rt = {};
