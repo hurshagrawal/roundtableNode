@@ -25,6 +25,8 @@ everyauth.twitter
 	.consumerKey('8zq12b5WobtJkU5WG2NqA')
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
 	.findOrCreateUser( function (session, accessToken, accessTokenSecret, data) {
+		console.log("THIS IS CALLED");
+		console.log(data);
 	})
 	.redirectPath('/');
 	
