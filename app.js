@@ -190,11 +190,11 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 				promise.fulfill(newUser);
 				return;
 			});
-		} else { //found in database
-			console.log("replies: "+replies[0]);
-			promise.fulfill(replies[0]);
-			return;
-		}
+		} // else { //found in database
+		// 			console.log("replies: "+replies[0]);
+		// 			promise.fulfill(replies[0]);
+		// 			return;
+		// 		}
 	});
 	
 	//promise.fail("Unknown error.");
