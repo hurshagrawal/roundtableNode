@@ -12,7 +12,8 @@ var express 	= require('express'),
 	RedisStore 	= require('connect-redis')(express),
 	fugue		= require('fugue'),
 	util		= require('util'),
-	everyauth	= require('everyauth');
+	everyauth	= require('everyauth'),
+	promise		= everyauth.Promise;
 
 client.on("error", function(err) {
 	console.log("Error" + err);
@@ -28,8 +29,9 @@ everyauth.twitter
 	.consumerKey('8zq12b5WobtJkU5WG2NqA')
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
 	.findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterData) {
-		console.log("THIS IS CALLED");
-		console.log(util.inspect(twitterData));
+		var promise = this.Promise();
+		rt.findOrCreateUser(promise, accessToken, accessTokenSecret, twitterData);
+		return promise;
 	})
 	.redirectPath('/close.html');
 	
@@ -70,21 +72,20 @@ app.configure('production', function(){
  *   INITIALIZATION
  */
 
-var userList = [];
-var numUsers = 0;
+var postCount = 0;
+var threadCount = 0;
 
-client.mget('userlist', function(err, replies) {
+client.mget('postCount', function(err, replies) {
 	if (!err) {
-		userList = replies[0];
+		postCount = replies[0];
 	}
 });
 
-client.mget('numUsers', function(err, replies) {
+client.mget('threadCount', function(err, replies) {
 	if (!err) {
-		numUsers = replies[0];
+		threadCount = replies[0];
 	}
 });
-
 
 /*
  *   ROUTES
@@ -165,3 +166,38 @@ app.listen(80);
  */
 
 var rt = {};
+
+rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterData) {
+	client.mget('users:' + twitterData.id_str, function(err, replies) {
+		if (err) {
+			console.log("User id "+twitterData.id_str+" not found. Creating account.");
+		
+			var newUser = new rt.User(twitterData.name, twitterData.screen_name, 
+					accessToken, accessTokenSecret);	
+							
+			console.log(util.inspect(newUser));
+			client.set('users:' + twitterData.id_str, JSON.stringify(newUser), function(err) {
+				if (err) {
+					console.log("Some sort of database error occured.");
+					promise.fail(err);
+					return;
+				}
+				promise.fulfill(newUser);
+				return;
+			});
+		} else {
+			promise.fulfill(replies[0]);
+			return;
+		}
+	});
+	
+	promise.fail("Unknown error.");
+};
+
+rt.User = function(name, twitterHandle, accessToken, accessTokenSecret) {
+	name: this.name,
+	twitterHandle: this.twitterHandle,
+	accessToken: this.accessToken,
+	accessTokenSecret: this.accessTokenSecret,
+	timeCreated: new Date()
+};
