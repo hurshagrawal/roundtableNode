@@ -11,7 +11,6 @@ var express 	= require('express'),
 	client		= redis.createClient(),
 	RedisStore 	= require('connect-redis')(express),
 	fugue		= require('fugue'),
-	util		= require('util'),
 	everyauth	= require('everyauth'),
 	promise		= everyauth.Promise;
 
@@ -168,6 +167,7 @@ app.listen(80);
 var rt = {};
 
 rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterData) {
+	console.log("GET HERE");
 	client.mget('users:' + twitterData.id_str, function(err, replies) {
 		console.log("GET HERE");
 		if (err) {
