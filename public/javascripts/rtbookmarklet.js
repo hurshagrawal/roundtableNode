@@ -146,9 +146,9 @@ function runthis() {
 	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.userID +"&c=" + $.base64Encode(rt.t);
 
 	//show iframe if already exists
-	rt.iframe = $('#roundtable_iframe');
+	rt.iframe = $('#roundtable_div');
 	if (rt.iframe.length) { //if frame exists
-		$('#roundtable_iframe').fadeIn();
+		$('#roundtable_div').fadeIn();
 			// if has text selected, copy into iframe
 		if (rt.t != "") {
 			rt.iframe.src = rt.iframe_url;
@@ -169,10 +169,10 @@ function runthis() {
 	
 	//append div and div stylesheet to body
 	$("head").append(rt.stylesheet);
-	$("body").append('<div id="roundtable_iframe"></div>');
+	$("body").append('<div id="roundtable_div" style="width:'+rt.boxwidth+', height:'+rt.boxheight+'"></div>');
 	
 	
-	rt.iframe = $("#roundtable_iframe");
+	rt.iframe = $("#roundtable_div");
 	rt.iframe.hide();
 	rt.iframe.append(rt.str).fadeIn();
 
