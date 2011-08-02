@@ -130,47 +130,47 @@ function runthis() {
 	 */
 	
 	//get selected text
-	var t = '';
+	rt.t = '';
 	if (window.getSelection) {
-		t = window.getSelection();
+		rt.t = window.getSelection();
 	} else if (document.getSelection) {
-		t = document.getSelection();
+		rt.t = document.getSelection();
 	} else if (document.selection) {
-		t = document.selection.createRange().text;
+		rt.t = document.selection.createRange().text;
 	}
 
-	var iframe_url = SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(t);
+	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(t);
 
-	var rt_iframe = $('#roundtable_iframe');
-	if (rt_iframe) { //if frame exists
+	rt.iframe = $('#roundtable_iframe');
+	if (rt.iframe) { //if frame exists
 		$('#roundtable_iframe').show(2);
 			// if has text selected, copy into iframe
 		if (t != "") {
-			rt_iframe.src = iframe_url;
+			rt.iframe.src = rt.iframe_url;
 		} else {
 			// want to set focus back to that item! but can't - access denied
 		}
 		return;
 	}
 	
-	var boxheight = 400;
-	var boxwidth = 700;
+	rt.boxheight = 400;
+	rt.boxwidth = 700;
 	
-	$("head").append('<link rel="stylesheet" href="'+ SERVERURL + '/stylesheets/iframe.css" '+
+	$("head").append('<link rel="stylesheet" href="'+ rt.SERVERURL + '/stylesheets/iframe.css" '+
 		'type="text/css" media="screen" title="no title" charset="utf-8">');
 
 	$("body").append('<div id="roundtable_iframe"></div>');
 	
-	var str = "";
-	str += "<iframe frameborder='0' scrolling='no' name='roundtable_iframe' id='roundtable_iframe' src='" + iframe_url;
-	str += "' width='"+boxwidth+"' height='"+boxheight+"' style='text-align: center; background-color: white;'></iframe>";
+	rt.str = "";
+	rt.str += "<iframe frameborder='0' scrolling='no' name='roundtable_iframe' id='roundtable_iframe' src='" + rt.iframe_url;
+	rt.str += "' width='"+rt.boxwidth+"' height='"+rt.boxheight+"' style='text-align: center; background-color: white;'></iframe>";
 	
-	rt_iframe = $("#roundtable_iframe");
+	rt.iframe = $("#roundtable_iframe");
 	
-	rt_iframe.append(str);
-	rt_iframe.keypress( function(e) {
+	rt.iframe.append(str);
+	rt.iframe.keypress( function(e) {
 		if (e.which == 27 ) {
-			rt_iframe.hide(2);
+			rt.iframe.hide(2);
 		}
 	});
 
