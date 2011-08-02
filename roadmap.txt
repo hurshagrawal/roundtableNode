@@ -1,0 +1,26 @@
+base
+
+url to authenticate with twitter (TWITAPI)
+	add to db (id, twitter handle, token)
+		ppl- id, twitter handle, token
+		posts- id, person, text
+		threads- id, posts, authorized ids
+	
+bookmarklet-->
+	creates overlay-->
+	get twitter token from db
+		tweet out--> (twitter api)
+		w link--> (bitly api)
+	send to app -> make room entry in db
+
+
+go to room-->
+	display with all threads
+	posting if logged in (box + submit) 
+		else LOG IN TO POST
+	sockets for real time (shift+enter to post)
+
+
+jay rosen
+jenna wortham
+chris dixon
