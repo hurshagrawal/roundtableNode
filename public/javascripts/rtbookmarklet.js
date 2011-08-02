@@ -148,7 +148,7 @@ function runthis() {
 	//show iframe if already exists
 	rt.iframe = $('#roundtable_iframe');
 	if (rt.iframe.length) { //if frame exists
-		$('#roundtable_iframe').fadeIn("slow");
+		$('#roundtable_iframe').fadeIn();
 			// if has text selected, copy into iframe
 		if (rt.t != "") {
 			rt.iframe.src = rt.iframe_url;
@@ -174,6 +174,6 @@ function runthis() {
 	
 	rt.iframe = $("#roundtable_iframe");
 	rt.iframe.hide();
-	rt.iframe.append(rt.str).fadeIn("slow");
+	rt.iframe.append(rt.str).fadeIn();
 
 }
