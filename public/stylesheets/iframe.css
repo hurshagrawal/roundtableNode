@@ -1,13 +1,14 @@
 #roundtable_div {
 	border: 12px solid black;
-	position:absolute;
-	top: 50px; 
-	left: 200px;
-	height: 400px;
-	width: 500px;
-	z-index: 10000000;
-	padding: 0;
-	background: white;
+	position: fixed;
+		_position:absolute;
+		top: 50px; 
+		left: 200px;
+		height: 400px;
+		width: 500px;
+		z-index: 10000000;
+		padding: 0;
+		background: white;
 }
 
 #roundtable_div:hover {
