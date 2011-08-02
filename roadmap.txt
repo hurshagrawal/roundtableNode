@@ -2,10 +2,16 @@ base
 
 url to authenticate with twitter (TWITAPI)
 	add to db (id, twitter handle, token)
-		ppl- id, twitter handle, token
+		ppl- id, twitter handle, token, posts, (RANDOM THANG???)
+			users:id:
 		posts- id, person, text
-		threads- id, posts, authorized ids
+			post:
+		threads- id, posts, authorized ids, bitly link
+			threads:
 	
+		FOR REDIS--> total ppl + ids
+		
+		
 bookmarklet-->
 	creates overlay-->
 	get twitter token from db

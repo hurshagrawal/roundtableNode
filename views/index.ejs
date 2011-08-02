@@ -1,2 +1,13 @@
 <link rel='stylesheet' href='/stylesheets/index.css' />
-<p><a href="/auth/twitter/">LOG IN WITH TWITTER</a></p>
+<script type="text/javascript" charset="utf-8">
+	function twitterAuthSuccess() {
+		$("#content").load('/authSuccess');
+	}
+
+	function openTwitterAuthWindow() {
+		googleAuthWin = window.open('/twitter/auth/', 
+			'open_window', 
+			'status, scrollbars, resizable, dependent, width=640, height=400');
+	}
+</script>
+<p><a href="javascript:openTwitterAuthWindow();">LOG IN WITH TWITTER</a></p>

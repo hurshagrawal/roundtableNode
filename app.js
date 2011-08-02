@@ -10,32 +10,43 @@ var express 	= require('express'),
 	redis		= require('redis'),
 	client		= redis.createClient(),
 	RedisStore 	= require('connect-redis')(express),
-	everyauth 	= require('everyauth'),
-	util		= require('util'),
-	fugue		= require('fugue');
+	fugue		= require('fugue'),
+	everyauth	= require('everyauth');
 
 client.on("error", function(err) {
 	console.log("Error" + err);
-}
+});
 
+/*
+ *   OAUTH INFO
+ */
+
+everyauth.twitter
+	.callbackPath('/close.html')
+	.consumerKey('8zq12b5WobtJkU5WG2NqA')
+	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU');
+	
 /*
  *   CONFIGURATION
  */
-app = module.exports = express.createServer();
+var app = module.exports = express.createServer(
+		express.bodyParser(),
+		express.methodOverride(),
+		express.cookieParser(),
+		express.session({ 
+			store: new RedisStore({}), 
+			secret: 'paneldiscussions' 
+		}),
+		express.static(__dirname + '/public'),
+		everyauth.middleware()
+	);
 
 app.configure(function() {
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
-	app.use(express.bodyParser());
-	app.use(express.methodOverride());
-	app.use(express.cookieParser());
-	app.use(express.session({ 
-		store: new RedisStore({}), 
-		secret: 'paneldiscussions' 
-	}));
 	app.use(app.router);
-	app.use(express.static(__dirname + '/public'));
 });
+
 	
 /*
  *   ENVIRONMENTS
@@ -68,19 +79,6 @@ client.mget('numUsers', function(err, replies) {
 	}
 });
 
-/*
- *   OAUTH INFO
- */
-
-everyauth.twitter
-	.consumerKey('8zq12b5WobtJkU5WG2NqA')
-	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
-	.findOrCreateUser(function(session, accessToken, accessTokenSecret, twitData) {
-	
-		})
-	.redirectPath('/');
-
-everyauth.debug = true;
 
 /*
  *   ROUTES
@@ -100,6 +98,9 @@ app.get('/createAccount', function(req, res) {
 	res.render('index', {});
 });
 
+app.get('/authSuccess', function(req, res) {
+	res.render('authSuccess', {});
+});
 
 app.get('/room/:id', function(req, res) {
 	//(1)gets room info (posts)
@@ -136,8 +137,9 @@ app.post('createRoom', function(req, res) {
  *   DEPLOY SERVER
  */
 
-everyauth.helpExpress(app);
+	everyauth.helpExpress(app);
 app.listen(3000);
+
 // fugue.start(app, 80, null, 2, {
 // 	verbose: true
 // });
