@@ -101,14 +101,13 @@ app.get('/', function(req, res) {
 
 */
 app.get('/createAccount', function(req, res) {
-
 	res.render('createAccount', {});
 });
 
 app.get('/authCallback', function(req, res) {
 	//SAVE THE TOKEN
 	console.log("GOT HERE");
-	res.redirect('/close.html');
+//	res.redirect('/close.html');
 });
 
 app.get('/authSuccess', function(req, res) {
