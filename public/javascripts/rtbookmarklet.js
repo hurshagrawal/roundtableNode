@@ -177,7 +177,7 @@ function runthis() {
 	}
 	
 	rt.boxheight = 400;
-	rt.boxwidth = 700;
+	rt.boxwidth = 500;
 	
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
 		'stylesheets/iframe.css" type="text/css" media="screen" title="no title" charset="utf-8">';
@@ -194,6 +194,6 @@ function runthis() {
 	rt.iframe = $("#roundtable_div");
 	rt.iframe.hide();
 	rt.iframe.append(rt.str).fadeIn();
-	rt.iframe.draggable({iframeFix: true, opacity: 0.75});
+	rt.iframe.draggable({opacity: 0.40});
 
 }
