@@ -198,7 +198,7 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 			});
 		} else { //found in database
 			console.log("Found user: "+replies[0]);
-			promise.fulfill(JSON.parse(replies[0])s);
+			promise.fulfill(JSON.parse(replies[0]));
 			return;
 		}
 	});
