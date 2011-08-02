@@ -119,7 +119,6 @@ app.get('/createAccount', function(req, res) {
 
 app.get('/authSuccess', function(req, res) {
 	
-	
 	res.render('authSuccess', {
 		serverURL: SERVERURL
 	});
