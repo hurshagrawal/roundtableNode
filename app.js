@@ -19,8 +19,13 @@ client.on("error", function(err) {
 	console.log("Error" + err);
 });
 
+/*
+ *   CONSTANTS
+ */
+
 //on changing - remember to change in: (twitter oauth)
 var SERVERURL = "http://ec2-67-202-30-240.compute-1.amazonaws.com/";
+var DEBUG = true;
 
 /*
  *   OAUTH INFO
@@ -180,8 +185,8 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 			console.log("Some sort of database error occured.");
 			promise.fail(err);
 			return;
-		} else if (replies[0] === null) { //not found in the database
-			var newUser = new rt.User(twitterData.name, twitterData.screen_name, 
+		} else if (replies[0] === null || DEBUG) { //not found in the database
+			var newUser = new rt.User(twitterData.id_str, twitterData.name, twitterData.screen_name, 
 				accessToken, accessTokenSecret);	
 
 			console.log("User id "+twitterData.id_str+" not found. Creating account.");
@@ -203,10 +208,10 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 		}
 	});
 	
-	//promise.fail("Unknown error.");
 };
 
-rt.User = function(name, twitterHandle, accessToken, accessTokenSecret) {
+rt.User = function(id, name, twitterHandle, accessToken, accessTokenSecret) {
+	this.id = id;
 	this.name = name;
 	this.twitterHandle = twitterHandle;
 	this.accessToken = accessToken;
