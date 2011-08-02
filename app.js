@@ -168,15 +168,18 @@ var rt = {};
 
 rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterData) {
 	client.mget('users:' + twitterData.id_str, function(err, replies) {
-		console.log("GET OVER HERE");
-		if (err) {
+		if (err) { //Database error of some sort
+			console.log("Some sort of database error occured.");
+			promise.fail(err);
+			return;
+		} else if (replies[0] === null) { //not found in the database
 			console.log("User id "+twitterData.id_str+" not found. Creating account.");
-		
+
 			var newUser = new rt.User(twitterData.name, twitterData.screen_name, 
-					accessToken, accessTokenSecret);	
-							
+				accessToken, accessTokenSecret);	
+
 			console.log(util.inspect(newUser));
-			
+
 			client.set('users:' + twitterData.id_str, JSON.stringify(newUser), function(err) {
 				if (err) {
 					console.log("Some sort of database error occured.");
@@ -186,9 +189,8 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 				promise.fulfill(newUser);
 				return;
 			});
-		} else {
-			console.log(console.log(replies[0]));
-			
+		} else { //found in database
+			console.log("replies: "+replies[0]);
 			promise.fulfill(replies[0]);
 			return;
 		}
