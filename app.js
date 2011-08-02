@@ -173,13 +173,13 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 			console.log("Some sort of database error occured.");
 			promise.fail(err);
 			return;
-		} else if (replies[0] === null) { //not found in the database
+		} else { //if (replies[0] === null) { //not found in the database
 			console.log("User id "+twitterData.id_str+" not found. Creating account.");
 
 			var newUser = new rt.User(twitterData.name, twitterData.screen_name, 
 				accessToken, accessTokenSecret);	
 
-			console.log(util.inspect(newUser));
+			console.log(newUser);
 
 			client.set('users:' + twitterData.id_str, JSON.stringify(newUser), function(err) {
 				if (err) {
