@@ -27,10 +27,11 @@ everyauth.debug = true;
 everyauth.twitter
 	.consumerKey('8zq12b5WobtJkU5WG2NqA')
 	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
-	.findOrCreateUser( function (session, accessToken, accessTokenSecret, data) {
+	.findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterData) {
 		console.log("THIS IS CALLED");
-		console.log(util.inspect.data);
-	});
+		console.log(util.inspect.twitterData);
+	})
+	.redirectPath('/close.html');
 	
 /*
  *   CONFIGURATION
@@ -98,19 +99,13 @@ app.get('/', function(req, res) {
 
 /*	links to createAccount page
 	-->opens twitter authentication window
-		-->returns to authCallback -->(create entry, save token, create bookmarklet)
-			-->closes window
+		-->returns to everyauth -->(create entry, save token, create bookmarklet)
+			-->closes window (redirects to close.html)
 				--> redirects main page to authSuccess -->(show bookmarklet)
 
 */
 app.get('/createAccount', function(req, res) {
 	res.render('createAccount', {});
-});
-
-app.get('/authCallback', function(req, res) {
-	//SAVE THE TOKEN
-	console.log(req.url);
-	res.redirect('/close.html');
 });
 
 app.get('/authSuccess', function(req, res) {
