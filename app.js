@@ -143,9 +143,9 @@ app.post('createRoom', function(req, res) {
  *   DEPLOY SERVER
  */
 
-	everyauth.helpExpress(app);
-app.listen(3000);
+everyauth.helpExpress(app);
+//app.listen(80);
 
-// fugue.start(app, 80, null, 2, {
-// 	verbose: true
-// });
+fugue.start(app, 80, null, 2, {
+	verbose: true
+});
