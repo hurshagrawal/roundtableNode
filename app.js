@@ -106,8 +106,7 @@ app.get('/createAccount', function(req, res) {
 
 app.get('/authCallback', function(req, res) {
 	//SAVE THE TOKEN
-	console.log(JSON.stringify(req.params));
-//	res.redirect('/close.html');
+	res.redirect('/close.html');
 });
 
 app.get('/authSuccess', function(req, res) {
