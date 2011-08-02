@@ -194,6 +194,6 @@ function runthis() {
 	rt.iframe = $("#roundtable_div");
 	rt.iframe.hide();
 	rt.iframe.append(rt.str).fadeIn();
-	rt.iframe.draggable({opacity: 0.40});
+	rt.iframe.draggable({ iframeFix: true, opacity: 0.40 });
 
 }
