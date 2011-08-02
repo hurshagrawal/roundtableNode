@@ -162,7 +162,7 @@ function runthis() {
 	rt.boxwidth = 700;
 	
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
-		'/stylesheets/iframe.css" type="text/css" media="screen" title="no title" charset="utf-8">';
+		'stylesheets/iframe.css" type="text/css" media="screen" title="no title" charset="utf-8">';
 	
 	$("head").append(rt.stylesheet);
 
