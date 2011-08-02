@@ -2,22 +2,18 @@ rt.SERVERURL = "http://ec2-67-202-30-240.compute-1.amazonaws.com/";
 
 //Load JQuery, then call runthis();
 (function() {
-	console.log(1);
 	if (typeof jQuery == 'undefined') {
-		console.log(2);
 		var jQ = document.createElement('script');
 		jQ.type = 'text/javascript';
 		jQ.onload=runthis;
 		jQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
 		document.body.appendChild(jQ);
 	} else {
-		console.log(3);
 		runthis();
 	}
 })();
 
 function runthis() {
-	console.log(4);
 	
 	/**
 	* jQuery BASE64 functions
@@ -55,7 +51,6 @@ function runthis() {
 			}
 			return output;
 		};
-		console.log(5);
 
 		var uTF8Decode = function(input) {
 			var string = "";
@@ -79,7 +74,6 @@ function runthis() {
 			}
 			return string;
 		}
-		console.log(6);
 
 		$.extend({
 			base64Encode: function(input) {
@@ -131,8 +125,6 @@ function runthis() {
 			}
 		});
 	})(jQuery);
-
-	console.log(7);
 	
 
 	/*	Bookmarklet creation code
@@ -148,10 +140,11 @@ function runthis() {
 		rt.t = document.selection.createRange().text;
 	}
 	
-	console.log(8);
-	
-	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(rt.t.toString());
+	rt.t = rt.t.toString();	
+	rt.iframe_url = rt.SERVERURL + "roundtable.html?d="+ rt.id +"&c=" + $.base64Encode(rt.t);
 
+	console.log("rt.iframe_url = "+rt.iframe_url);
+	
 	rt.iframe = $('#roundtable_iframe');
 	if (rt.iframe) { //if frame exists
 		$('#roundtable_iframe').show(2);
