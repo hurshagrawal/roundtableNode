@@ -24,7 +24,9 @@ client.on("error", function(err) {
 everyauth.twitter
 	.callbackPath('/close.html')
 	.consumerKey('8zq12b5WobtJkU5WG2NqA')
-	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU');
+	.consumerSecret('y5QS4NDX5TqRYZFYi7qLsjsRCefa46Dlx42j97YeU')
+	.findOrCreateUser( function (session, accessToken, accessTokenSecret, data) {})
+	.redirectPath('/');
 	
 /*
  *   CONFIGURATION
