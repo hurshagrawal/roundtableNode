@@ -46,9 +46,18 @@ var app = module.exports = express.createServer(
 	);
 
 app.configure(function() {
+	app.use(express.bodyParser());
+	app.use(express.methodOverride());
+	app.use(express.cookieParser());
+	app.use(express.session({ 
+		store: new RedisStore({}), 
+		secret: 'paneldiscussions' 
+	}));
+	app.use(express.static(__dirname + '/public'));
+	app.use(everyauth.middleware());
+	app.use(app.router);
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
-	app.use(app.router);
 });
 
 	
