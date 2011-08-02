@@ -12,6 +12,7 @@ var express 	= require('express'),
 	RedisStore 	= require('connect-redis')(express),
 	fugue		= require('fugue'),
 	everyauth	= require('everyauth'),
+	util		= require('util'),
 	promise		= everyauth.Promise;
 
 client.on("error", function(err) {
