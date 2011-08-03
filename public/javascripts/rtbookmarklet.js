@@ -148,9 +148,9 @@ function runthis() {
 		var dataString = 'userID=' + rt.userID + '&postContent=' 
 			+ encodeURI($('#rt_post textarea').val());
 			
-		console.log(dataString);
+		console.log(rt.SERVERURL+'createRoundtable?'+dataString);
 		
 		$("rt_tweet").children().hide();
-		$("rt_tweet").append(<'iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString'" width="100%" height="800"></iframe>');
+		$("rt_tweet").append('<iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString'" width="100%" height="800"></iframe>');
 	});
 }
