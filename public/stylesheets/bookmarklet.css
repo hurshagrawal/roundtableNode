@@ -1,7 +1,9 @@
 #roundtable_div {
 	border: 12px solid black;
 	position: absolute;
-	top: 0px; 
+	top: 0px;
+	margin-left: auto;
+	margin-right: auto;
 	height: 400px;
 	width: 700px;
 	z-index: 10000000;
