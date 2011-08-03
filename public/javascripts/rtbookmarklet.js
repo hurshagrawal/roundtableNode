@@ -182,7 +182,7 @@ function runthis() {
 		return;
 	}
 	
-	rt.boxheight = 350;
+	rt.boxheight = 330;
 	rt.boxwidth = 700;
 	
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
@@ -235,7 +235,7 @@ function runthis() {
 	//AJAX FUNCTIONS
 	
 	//roundtable submit button
-	$('#rt_subpost').click(function() {
+	$('#rt_submit').click(function() {
 		//TODO - do stuff with the actual divs
 		
 		var dataString = 'userID=' + rt.userID + '&postContent=' 
