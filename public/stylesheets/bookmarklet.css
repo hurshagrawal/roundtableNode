@@ -6,6 +6,7 @@
 	width: 700px;
 	z-index: 10000000;
 	background: rgba(255, 255, 255, 0.6) none;
+	text-align: left;
 }
 
 #rt_close {
@@ -78,7 +79,7 @@
 }
 
 #rt_submit:hover {
-	background: #4b4b4b;
+	background: #e2e2e2;
 	color: black;
 	cursor: pointer;
 }
