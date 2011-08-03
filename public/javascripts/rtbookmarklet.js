@@ -101,16 +101,13 @@ function runthis() {
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
 	
-	rt.tweet_textarea = $('#rt_tweet textarea');
-	rt.tweet_textarea.val("(optional)").click(function() {
-		if (rt.tweet_textarea.val() === "(optional)") {
-			rt.tweet_textarea.val("");
-			rt.tweet_textarea.css("color", "black");
+	$('#rt_tweet textarea').val("(optional)").click(function() {
+		if ($('#rt_tweet textarea').val() === "(optional)") {
+			$('#rt_tweet textarea').val("").css("color", "black");
 		}
 	}).focusout( function() {
-		if (rt.tweet_textarea.val() === "") {
-			rt.tweet_textarea.val("(optional)");
-			rt.tweet_textarea.css("color", "grey");
+		if ($('#rt_tweet textarea').val() === "") {
+			$('#rt_tweet textarea').val("(optional)").css("color", "grey");
 		}
 	}).css("color", "grey");
 	
@@ -120,12 +117,12 @@ function runthis() {
 			.draggable({ opacity: 0.40 })
 			.css('position', 'fixed')
 			.bind('dragstop', function(event, ui) {
-				rt.divframe.css('position', 'fixed');
+				$("#rt_div").css('position', 'fixed');
 			})
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
 		
 	$("#rt_close").click(function() {
-		rt.divframe.fadeOut();
+		$("#rt_div").fadeOut();
 	});
 
 	if (rt.t !== "") { //adds quotes around the quote if a string exists
