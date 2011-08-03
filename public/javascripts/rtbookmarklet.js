@@ -95,12 +95,15 @@ function runthis() {
 			.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />')
 			.append('<div id="rt_logo">roundtable</div>')
 			.append('<div id="rt_post"></div>')
-			.append('<div class="rt_submit" id="rt_subpost">create a roundtable</div>')
-			.append('<div id="rt_tweet"></div>')
-			.append('<div class="rt_submit" id="rt_subtweet">send tweet</div>');
+			.append('<div id="rt_tweet"></div>');
 
-	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
-	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
+
+	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>')
+				.append('<div class="rt_submit" id="rt_subpost">create a roundtable</div>');
+					
+	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>')
+				.append('<div class="rt_submit" id="rt_subtweet">send tweet</div>');
+
 	
 	$('#rt_tweet textarea').val("(optional)").click(function() {
 		if ($('#rt_tweet textarea').val() === "(optional)") {
