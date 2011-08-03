@@ -1,12 +1,12 @@
 #roundtable_div {
 	border: 12px solid black;
-	position: fixed;
-		_position: absolute;
-		top: 50px; 
-		left: 200px;
-		height: 400px;
-		width: 700px;
-		z-index: 10000000;
-		padding: 0;
-		background: white;
+	position: absolute;
+	top: 0px; 
+	right: 0px;
+	height: 400px;
+	width: 700px;
+	z-index: 10000000;
+	padding: 10px;
+	margin: 10px;
+	background: white;
 }

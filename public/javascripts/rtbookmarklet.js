@@ -27,7 +27,7 @@ function checkForJQ_UI() {
 }
 
 function runthis() {
-	
+		
 	//get selected text
 	function getSelectedText(){ 
 		if (window.getSelection) { 
