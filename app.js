@@ -224,11 +224,14 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				console.log(7);
-				var arr = postContentstr.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
+				var arr = postContent.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
+				console.log(arr);
 				for (var i=1;i<arr.length;i++) {
 					console.log(i);
 					nameArray.push(arr[i].split(" ")[0]);
 				}
+				console.log(util.inspect(nameArray));
+				this();
 			}
 		},
 		function getUserIDsFromTwitterHandles() {
