@@ -23,7 +23,7 @@
 	position: absolute;
 	margin: 0px;
 	padding: 0px;
-	right: 0px;
+	right: -20px;
 	top: -20px;	
 	width: 260px;
 	font-family: "Paytone One";
@@ -43,7 +43,7 @@
 	font-size: 22px;
 	color: black;
 	width: 200px;
-	top: 35px;
+	top: 25px;
 	left: 30px;
 
 }
