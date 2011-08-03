@@ -65,13 +65,24 @@ function runthis() {
 		'stylesheets/bookmarklet.css" type="text/css" media="screen" title="no title" charset="utf-8">';
 	
 	//append div and div stylesheet to body
-	$("head").append(rt.stylesheet);
+	
+	$("head").append(rt.stylesheet)
+			.append("<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>");
 	$("body").append('<div id="rt_div"></div>');
 	
 	
 	rt.divframe = $("#rt_div");
 	rt.divframe.hide();
-	rt.divframe.append(rt.str);
+	rt.divframe.append(rt.str)
+			.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />')
+			.append('<div id="rt_logo">roundtable</div>')
+			.append('<div id="rt_tweet"></div>')
+			.append('<div id="rt_post"></div>');
+
+	$('#rt_tweet').append('<div>Tweet:</div><input type="text">');
+	$('#rt_post').append('<div>Roundtable post:</div><input type="text">');
+	
+	//TODO - properly format quoted. RESIZE the box.
 	
 	rt.divframe.fadeIn()
 			.draggable({ opacity: 0.40 })
@@ -81,7 +92,6 @@ function runthis() {
 			})
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
 		
-	rt.divframe.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />');
 	$("#rt_close").click(function() {
 		rt.divframe.fadeOut();
 	});

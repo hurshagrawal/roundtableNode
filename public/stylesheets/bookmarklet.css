@@ -13,3 +13,10 @@
 	top: -60px;
 	left: -60px;
 }
+
+#rt_logo {
+	float: right;
+	font-family: "Payton One";
+	size: 50px;
+	margin: 10px;
+}
