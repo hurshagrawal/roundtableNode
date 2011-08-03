@@ -231,7 +231,7 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				//PLACEHOLDER
-				newThread = new rt.Thread("NO BITLY LINK YET");
+				newThread = new rt.Thread(userID,"NO BITLY LINK YET");
 				this();
 			}
 		},
@@ -415,7 +415,8 @@ rt.Post = function(creatorID, postContent) {
 	this.postContent = postContent;
 };
 
-rt.Thread = function(bitlyLink) {
+rt.Thread = function(creatorID, bitlyLink) {
+	this.creatorID = creatorID;
 	this.bitlyLink = bitlyLink;
 	this.timeCreated = new Date();
 };
