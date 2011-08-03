@@ -1,16 +1,10 @@
-#rt_wrapper {
+#roundtable_div {
+	border: 12px solid black;
 	position: absolute;
 	top: 0px; 
 	right: 0px;
 	height: 400px;
 	width: 700px;
 	z-index: 10000000;
-}
-
-#roundtable_div {
-	border: 12px solid black;
-	position: relative;
-	height: 400px;
-	width: 700px;
 	background: white;
 }

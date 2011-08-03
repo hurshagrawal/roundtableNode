@@ -66,12 +66,17 @@ function runthis() {
 	
 	//append div and div stylesheet to body
 	$("head").append(rt.stylesheet);
-	$("body").append('<div id="rt_wrapper"><div id="roundtable_div"></div></div>');
+	$("body").append('<div id="roundtable_div"></div>');
 	
 	
 	rt.divframe = $("#roundtable_div");
 	rt.divframe.hide();
-	rt.divframe.append(rt.str).fadeIn();
-	rt.divframe.draggable({ opacity: 0.40 });
+	rt.divframe.append(rt.str)
+	rt.divframe.fadeIn();
+			.draggable({ opacity: 0.40 });
+			.css('position', 'absolute');
+			.bind('dragstop', function(event, ui) {
+				rt.divframe.css('position', 'absolute');
+			});
 
 }
