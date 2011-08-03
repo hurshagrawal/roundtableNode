@@ -147,7 +147,8 @@ app.get('/roundtable/:id', function(req, res) {
 				threadInfo = info;
 				threadUsers = users;
 				var group = this.group();
-				var postArr = JSON.parse(postArr);
+				var postArr = JSON.parse(posts);
+				console.log(postArr);
 				for (var i=0;i<postArr;i++) {
 					client.mget("posts:"+postArr[i], group());
 				}
@@ -157,6 +158,7 @@ app.get('/roundtable/:id', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(posts),
 				threadPosts = posts;
 				this();
 			}
