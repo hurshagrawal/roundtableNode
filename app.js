@@ -287,7 +287,7 @@ app.get('/createRoundtable', function(req, res) {
 		},
 		function addUserArrayToPost(userArray) {
 			console.log(10);
-			client.set('threads:'+newThreadID+':users', userArray, this);
+			client.set('threads:'+newThreadID+':users', JSON.stringify(userArray), this);
 		},
 		function returnLinkToBookmarklet(err) {
 			if (err) {
