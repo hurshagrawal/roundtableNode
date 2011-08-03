@@ -361,7 +361,7 @@ everyauth.helpExpress(app);
 // app.listen(80);
 
 fugue.start(app, 80, null, 2, {
-	verbose: true
+	verbose: false
 });
 
 
