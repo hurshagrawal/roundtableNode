@@ -74,9 +74,9 @@ function runthis() {
 	rt.divframe.append(rt.str)
 	rt.divframe.fadeIn()
 			.draggable({ opacity: 0.40 })
-			.css('position', 'absolute')
+			.css('position', 'fixed')
 			.bind('dragstop', function(event, ui) {
-				rt.divframe.css('position', 'absolute');
+				rt.divframe.css('position', 'fixed');
 			})
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
 

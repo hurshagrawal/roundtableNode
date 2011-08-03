@@ -1,7 +1,7 @@
 #roundtable_div {
 	border: 12px solid black;
 	position: fixed;
-	top: 20px;
+	top: 50px;
 	height: 400px;
 	width: 700px;
 	z-index: 10000000;
