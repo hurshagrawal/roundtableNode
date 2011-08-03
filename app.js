@@ -228,6 +228,8 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(arr);
 				for (var i=1;i<arr.length;i++) {
 					console.log("i="+i);
+					console.log(arr[i]);
+					console.log(arr[i].split(" "));
 					console.log(arr[i].split(" ")[0]);
 					//nameArray.push(arr[i].split(" ")[0]);
 				}
