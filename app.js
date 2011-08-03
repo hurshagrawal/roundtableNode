@@ -157,7 +157,10 @@ app.get('/user/:id', function(req, res) {
 app.get('/createRoundtable', function(req, res) {
 	
 	var urlParams = url.parse(req.url);
+	console.log(urlParams);
+	
 	var userID = urlParams.userID;
+	
 	var postContent = new Buffer(urlParams.postContent, 'base64').toString('ascii');
 	console.log(postContent);
 	
