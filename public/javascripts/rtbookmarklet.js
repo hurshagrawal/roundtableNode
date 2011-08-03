@@ -45,9 +45,9 @@ function runthis() {
 	//rt.userID
 
 	//show divframe if already exists
-	rt.divframe = $('#roundtable_div');
+	rt.divframe = $('#rt_div');
 	if (rt.divframe.length) { //if frame exists
-		$('#roundtable_div').fadeIn();
+		$('#rt_div').fadeIn();
 			// if has text selected, copy into divframe
 		if (rt.t != "") {
 			/*  -------------TODO - change selected text input ----
@@ -66,12 +66,13 @@ function runthis() {
 	
 	//append div and div stylesheet to body
 	$("head").append(rt.stylesheet);
-	$("body").append('<div id="roundtable_div"></div>');
+	$("body").append('<div id="rt_div"></div>');
 	
 	
-	rt.divframe = $("#roundtable_div");
+	rt.divframe = $("#rt_div");
 	rt.divframe.hide();
-	rt.divframe.append(rt.str)
+	rt.divframe.append(rt.str);
+	
 	rt.divframe.fadeTo(400, 0.75)
 			.draggable({ opacity: 0.40 })
 			.css('position', 'fixed')
@@ -79,5 +80,12 @@ function runthis() {
 				rt.divframe.css('position', 'fixed');
 			})
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
+		
+	rt.divframe.append('<div id="rt_close"><img src="'+rt.SERVERURL+'images/X.png" alt="close" /></div>');
+	
+	rt.divframe.append('<div id="rt_close"><img src="'+rt.SERVERURL+'images/X.png" alt="close" /></div>');
+	$("#rt_close").fadeIn().click(function() {
+		rt.divframe.hide(400);
+	});
 
 }

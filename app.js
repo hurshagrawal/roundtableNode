@@ -111,7 +111,6 @@ app.get('/', function(req, res) {
 		-->returns to everyauth -->(create entry, save token, create bookmarklet)
 			-->closes window (redirects to close.html)
 				--> redirects main page to authSuccess -->(show bookmarklet)
-
 */
 app.get('/createAccount', function(req, res) {
 	res.render('createAccount', {});

@@ -1,4 +1,4 @@
-#roundtable_div {
+#rt_div {
 	border: 12px solid black;
 	position: fixed;
 	top: 50px;
@@ -6,4 +6,10 @@
 	width: 700px;
 	z-index: 10000000;
 	background: white;
+}
+
+#rt_close {
+	position: relative;
+	top: -10px;
+	left: -10px;
 }
