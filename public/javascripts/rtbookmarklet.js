@@ -53,7 +53,8 @@ function runthis() {
 	}
 	
 	//encode selected text and put in URL
-	rt.t = getSelectedText();	
+	rt.t = getSelectedText().replace(/\s+/gi;
+	rt.t = $(rt.t).trim();	
 
 	//rt.userID
 
@@ -97,7 +98,7 @@ function runthis() {
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
 	
-	$('#rt_post textarea').val('@  "'+rt.t+'"').setCursorPosition(1);
+	$('#rt_post textarea').val('@  "'+rt.t+'"').focus().setCursorPosition(1);
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
