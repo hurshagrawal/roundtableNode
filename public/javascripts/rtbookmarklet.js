@@ -73,7 +73,7 @@ function runthis() {
 	rt.divframe.hide();
 	rt.divframe.append(rt.str);
 	
-	rt.divframe.fadeIn())
+	rt.divframe.fadeIn()
 			.draggable({ opacity: 0.40 })
 			.css('position', 'fixed')
 			.bind('dragstop', function(event, ui) {
