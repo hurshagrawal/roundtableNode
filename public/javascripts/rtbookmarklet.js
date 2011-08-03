@@ -58,7 +58,7 @@ function runthis() {
 		return;
 	}
 	
-	rt.boxheight = 400;
+	rt.boxheight = 500;
 	rt.boxwidth = 700;
 	
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
