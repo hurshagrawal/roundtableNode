@@ -204,7 +204,7 @@ function runthis() {
 			.append('<div id="rt_post"></div>')
 
 	//populate roundtable div
-	$('#rt_post').append('<div id="rt_label">roundtable topic</div><textarea rows="12"></textarea>')
+	$('#rt_post').append('<div id="rt_label">roundtable topic</div><textarea rows="11"></textarea>')
 				.append('<div id="rt_submit">create a roundtable</div>');
 
 	
