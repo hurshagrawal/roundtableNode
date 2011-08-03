@@ -65,10 +65,10 @@ function runthis() {
 			// if has text selected, copy into divframe
 		if (rt.t != "") {
 			if (rt.t !== "") { //adds quotes around the quote if a string exists
-				rt.t = '  "'+rt.t+'"';
+				rt.t = '"'+rt.t+'"  ';
 			}
 
-			$('#rt_post textarea').val('@'+rt.t).focus();
+			$('#rt_post textarea').val(rt.t+"@").focus();
 		} else {
 			// want to set focus back to that item but can't - access denied
 		}
