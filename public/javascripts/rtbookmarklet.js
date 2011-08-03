@@ -152,10 +152,10 @@ function runthis() {
 		
 		$.ajax({
 			type: 'POST',
-			url: '/createRoundtable',
+			url: rt.SERVERURL+'createRoundtable',
 			data: dataString,
 			success: function(data) {
-				//TO DO = after callback?
+				console.log(data);
 			}
 		});
 	});
