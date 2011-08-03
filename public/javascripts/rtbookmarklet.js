@@ -150,7 +150,7 @@ function runthis() {
 			
 		console.log(rt.SERVERURL+'createRoundtable?'+dataString);
 		
-		$("rt_tweet").children().hide();
+		$("rt_post div, rt_post textarea").fadeOut();
 		$("rt_tweet").append('<iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString+'" width="100%" height="800"></iframe>');
 	});
 }
