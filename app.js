@@ -249,7 +249,7 @@ app.get('/createRoundtable', function(req, res) {
 				http.get(options, function(res) {
 					res.setEncoding('utf8');
 					res.on('data', function(data) {
-						console.log(data);
+						group();
 					});
 				}).on('error', function(err) {
 					console.log(err);
