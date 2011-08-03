@@ -28,7 +28,7 @@
 
 #rt_tweet {
 	position: relative;
-	top: -175px;
+	top: -185px;
 	margin: 20px 20px 10px 20px;
 }
 
@@ -82,4 +82,10 @@
 	background: #e2e2e2;
 	color: black;
 	cursor: pointer;
+}
+
+#rt_subtweet {
+	font-size: 25px;
+	height: 42px;
+	width: 320px;
 }
