@@ -78,10 +78,12 @@ function runthis() {
 			.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />')
 			.append('<div id="rt_logo">roundtable</div>')
 			.append('<div id="rt_tweet"></div>')
-			.append('<div id="rt_post"></div>');
+			.append('<div id="rt_post"></div>')
+			.append('<div id="rt_submit"></div>');
 
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
-	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="12"></textarea>');
+	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
+	
 	
 	
 	
