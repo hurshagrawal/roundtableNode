@@ -168,7 +168,7 @@ app.get('/createRoundtable', function(req, res) {
 	var newPost = new rt.Post(parseInt(userID), postContent);
 	
 	var newThreadID = ++threadCount;
-	var newThread, nameArray, userArray;
+	var newThread, userArray;
 	
 	
 	step(
@@ -223,21 +223,20 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
+				var nameArray;
 				console.log(7);
 				var arr = postContent.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
 				console.log(arr);
 				for (var i=1;i<arr.length;i++) {
 					console.log("i="+i);
-					console.log(arr[i]);
-					console.log(arr[i].split(" "));
-					console.log(arr[i].split(" ")[0]);
-					//nameArray.push(arr[i].split(" ")[0]);
+					nameArray.push(arr[i].split(" ")[0]);
+					console.log("get's here");
 				}
-				console.log(util.inspect(nameArray));
-				this();
+				console.log(nameArray);
+				this(nameArray);
 			}
 		},
-		function getUserIDsFromTwitterHandles() {
+		function getUserIDsFromTwitterHandles(nameArray) {
 			var group = this.group();
 			nameArray.forEach(function(name) {
 				console.log(8+": "+name);
