@@ -212,7 +212,7 @@ function runthis() {
 	
 	//activates div frame after creation
 	rt.divframe.fadeIn()
-			//.draggable({ opacity: 0.40 })
+			.draggable({ opacity: 0.40 })
 			.css('position', 'fixed')
 			.bind('dragstop', function(event, ui) {
 				$("#rt_div").css('position', 'fixed');
