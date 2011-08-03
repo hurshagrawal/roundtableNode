@@ -169,6 +169,7 @@ app.get('/createRoundtable', function(req, res) {
 	
 	var newThreadID = ++threadCount;
 	var newThread;
+	var userArray = new Array();
 	
 	
 	step(
@@ -260,7 +261,6 @@ app.get('/createRoundtable', function(req, res) {
 		},
 		function addUsersToThread(err, userInfo) {
 			var tempUser;
-			var userArray = new Array();
 			userInfo.forEach(function(userInfo) {
 				var user = JSON.parse(userInfo);
 				if (user instanceof Array) {
@@ -282,7 +282,8 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				res.render('rtSuccess', {
-					roundtableURL: SERVERURL+"roundtable/"+newThreadID
+					roundtableURL: SERVERURL+"roundtable/"+newThreadID,
+					userArray: JSON.stringify(userArray)
 				});
 			}
 		}	

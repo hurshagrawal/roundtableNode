@@ -7,23 +7,32 @@
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
-		<style type="text/css" media="screen">
-			#main {
-				font-family: "Paytone One";
-				font-size: 18px;
-				text-align: center;
-				color: black;
-			}
-			#main a {
-				font-size: 25px;
-				color: #d90303;
-			}
-		</style>
+		<link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/stylesheets/rtSuccess.css" type="text/css" media="screen" charset="utf-8">
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
+		<script type="text/javascript" charset="utf-8">
+			$(function() {
+				var userArray = $.parseJSON("<%= userArray %>");
+				var handleStr = "";
+				for (var i=0;i<userArray.length;i++) {
+					handleStr += "@" + userArray[i].twitterHandle + " ";
+				}
+				
+				$("#twitterpost textarea").val(handleStr);
+			});
+
+		
+		</script>
 	</head>
 	<body>
-		<div id="main">
+		<div id="success">
 			Roundtable created! You can visit it at:<br>
 			<a href="<%= roundtableURL %>"><%= roundtableURL %></a>
+		</div>
+		<div id="twitterpost">
+			<div id="label">Tweet it out</div>
+			<textarea rows="4"></textarea>
+			<div id="twittersubmit">Tweet</div>
 		</div>
 	</body>
 </html>
