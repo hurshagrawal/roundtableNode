@@ -13,7 +13,8 @@ var express 	= require('express'),
 	fugue		= require('fugue'),
 	everyauth	= require('everyauth'),
 	util		= require('util'),
-	promise		= everyauth.Promise;
+	promise		= everyauth.Promise,
+	querystring	= require('querystring');
 
 client.on("error", function(err) {
 	console.log("Error" + err);
@@ -156,7 +157,7 @@ app.get('/user/:id', function(req, res) {
 */
 app.get('/createRoundtable', function(req, res) {
 	
-	var urlParams = url.parse(req.url);
+	var urlParams = url.parse(req.url, true);
 	console.log(urlParams);
 	
 	var userID = urlParams.userID;
