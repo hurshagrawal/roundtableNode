@@ -158,7 +158,6 @@ app.get('/user/:id', function(req, res) {
 app.get('/createRoundtable', function(req, res) {
 	
 	var urlParams = url.parse(req.url, true);
-	console.log(urlParams);
 	
 	var userID = urlParams.query.userID;
 	
@@ -174,12 +173,14 @@ app.get('/createRoundtable', function(req, res) {
 	
 	step(
 		function updatePostCountInDB() {
+			console.log(1);
 			client.set('postCount', postCount, this)
 		},
 		function updateThreadCountInDB(err) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(2);
 				client.set('threadCount', threadCount, this);
 			}
 		},
@@ -187,6 +188,7 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(3);
 				client.set('posts:'+newPostID, JSON.stringify(newPost), this);
 			}
 		},
@@ -195,6 +197,7 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				//PLACEHOLDER
+				console.log(4);
 				newThread = new rt.Thread("NO BITLY LINK YET");
 			}
 		},
@@ -202,6 +205,7 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(5);
 				client.set('threads:'+newThreadID, JSON.stringify(newThread), this);
 			}
 		},
@@ -209,6 +213,7 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(6);
 				var postArray = [newPost];
 				client.set('threads:'+newThreadID+':posts', JSON.stringify(postArray), this);
 			}
@@ -217,8 +222,10 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(7);
 				var arr = postContentstr.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
 				for (var i=1;i<arr.length;i++) {
+					console.log(i);
 					nameArray.push(arr[i].split(" ")[0]);
 				}
 			}
@@ -226,6 +233,7 @@ app.get('/createRoundtable', function(req, res) {
 		function getUserIDsFromTwitterHandles() {
 			var group = this.group();
 			nameArray.forEach(function(name) {
+				console.log(8+": "+name);
 				var options = {
 					host: 'api.twitter.com',
 					port: 80,
@@ -251,18 +259,21 @@ app.get('/createRoundtable', function(req, res) {
 							name: user.name,
 							twitterHandle: user.screen_name 
 						};
+					console.log(9);
 					userArray.push(tempUser);
 					}
 				});
 			}
 		},
 		function addUserArrayToPost() {
+			console.log(10);
 			client.set('threads:'+newThreadID+':users', userArray, this);
 		},
 		function returnLinkToBookmarklet(err) {
 			if (err) {
 				console.log(err);
 			} else {
+				console.log(11);
 				var responseString = {
 					url: "/roundtable/"+newThreadID
 				}
