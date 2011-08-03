@@ -252,9 +252,6 @@ app.get('/createRoundtable', function(req, res) {
 			});
 		},
 		function addUsersToThread(userInfo) {
-			if (err) {
-				console.log(err);
-			} else {
 				console.log(userInfo);
 				var tempUser;
 				userInfo.forEach(function(userInfo) {
@@ -270,7 +267,6 @@ app.get('/createRoundtable', function(req, res) {
 					}
 				});
 				this();
-			}
 		},
 		function addUserArrayToPost() {
 			console.log(10);
