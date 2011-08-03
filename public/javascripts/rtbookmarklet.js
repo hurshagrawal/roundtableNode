@@ -53,7 +53,7 @@ function runthis() {
 	}
 	
 	//encode selected text and put in URL
-	rt.t = getSelectedText().replace(/\s+/gi;
+	rt.t = getSelectedText().replace(/\s+/gi);
 	rt.t = $(rt.t).trim();	
 
 	//rt.userID
