@@ -252,6 +252,7 @@ app.get('/createRoundtable', function(req, res) {
 			});
 		},
 		function addUsersToThread(userInfo) {
+				console.log(userInfo);
 				var tempUser;
 				userInfo = JSON.parse(userInfo);
 				var userArray = new Array();
