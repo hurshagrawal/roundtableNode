@@ -78,7 +78,6 @@ function runthis() {
 			.bind('dragstop', function(event, ui) {
 				rt.divframe.css('position', 'absolute');
 			})
-			.css("top", (($(window).height() - rt.divframe.outerHeight()) / 2) + $(window).scrollTop() + "px")
-		    .css("left", (($(window).width() - rt.divframe.outerWidth()) / 2) + $(window).scrollLeft() + "px");
+		    .css("left", (($(window).width() - rt.divframe.outerWidth()) / 2) + "px");
 
 }
