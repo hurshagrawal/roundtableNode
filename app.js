@@ -130,10 +130,45 @@ app.get('/authSuccess', function(req, res) {
 
 */
 app.get('/roundtable/:id', function(req, res) {
+	var threadInfo;
+	var threadPosts;
+	var threadUsers;
+	
 	step(
-		function getPostsForRoom() {
-			//client.mget("rooms:" + req.params.id, , );
+		function getThreadItems() {
+			client.mget("threads:" + req.params.id, this.parallel());
+			client.mget("threads:" + req.params.id + ":posts", this.parallel());
+			client.mget("threads:" + req.params.id + ":users", this.parallel());
+		}, 
+		function getThreadPosts(err, info, posts, users) {
+			if (err) {
+				console.log(err);
+			} else {
+				threadInfo = info;
+				threadUsers = users;
+				var group = this.group();
+				var postArr = JSON.parse(postArr);
+				for (var i=0;i<postArr;i++) {
+					client.mget("posts:"+postArr[i], group());
+				}
+			}
+		},
+		function savePostArray(err, posts) {
+			if (err) {
+				console.log(err);
+			} else {
+				threadPosts = posts;
+				this();
+			}
+		},
+		function renderThread() {
+			res.render('roundtable', {
+				threadInfo: threadInfo,
+				threadPosts: threadPosts,
+				threadUsers: threadUsers
+			});
 		}
+		
 	);
 });
 
@@ -169,6 +204,7 @@ app.get('/createRoundtable', function(req, res) {
 	
 	var newThreadID = ++threadCount;
 	var newThread;
+	var postArray;
 	var userArray = new Array();
 	
 	
@@ -210,8 +246,27 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
-				var postArray = [newPost];
+				postArray = [newPostID];
 				client.set('threads:'+newThreadID+':posts', JSON.stringify(postArray), this);
+			}
+		},
+		function getUserPosts(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				client.mget('users:'+userID+':posts', this);
+			}
+		},
+		function addNewPostToUser(err, replies) {
+			if (err) {
+				console.log(err);
+			} else {
+				if (replies[0]) {
+					console.log(replies[0]);
+					postArray = JSON.parse(replies[0]);
+					postArray.push(newPostID);
+				}
+				client.set('users:'+userID+':posts', JSON.stringify(postArray), this);
 			}
 		},
 		function extractUserListFromContent(err) {
