@@ -39,3 +39,10 @@ go to room-->
 jay rosen
 jenna wortham
 chris dixon
+
+BUGS?
+-changing styles
+-encoding
+-check the steps
+-moving down on page
+-OWN TWITTER should be added automatically
