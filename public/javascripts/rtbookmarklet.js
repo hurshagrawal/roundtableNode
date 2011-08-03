@@ -68,7 +68,7 @@ function runthis() {
 				rt.t = '  "'+rt.t+'"';
 			}
 
-			$('#rt_post textarea').val('@'+rt.t);
+			$('#rt_post textarea').val('@'+rt.t).focus();
 		} else {
 			// want to set focus back to that item but can't - access denied
 		}
