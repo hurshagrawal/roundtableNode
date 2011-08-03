@@ -244,6 +244,6 @@ function runthis() {
 		console.log(rt.SERVERURL+'createRoundtable?'+dataString);
 		
 		$("#rt_post div, #rt_post textarea").fadeOut("fast");
-		$("#rt_post").append('<iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString+'" width="100%" height="800"></iframe>').fadeIn("fast");
+		$("#rt_post").append('<iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString+'" width="'+rt.boxwidth+'" height="'+rt.boxheight+'" scrolling="no"></iframe>').fadeIn("fast");
 	});
 }
