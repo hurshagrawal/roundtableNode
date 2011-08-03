@@ -20,7 +20,7 @@
 }
 
 #rt_logo {
-	position: relative;
+	position: absolute;
 	width: 260px;
 	top: -130px;
 	left: 440px;
