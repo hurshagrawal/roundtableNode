@@ -237,7 +237,7 @@ app.get('/createRoundtable', function(req, res) {
 			}
 		},
 		function getUserIDsFromTwitterHandles(nameArray) {
-			var group = this.group();
+			//var group = this.group();
 			nameArray.forEach(function(name) {
 				console.log(8+": "+name);
 				var options = {
@@ -246,8 +246,10 @@ app.get('/createRoundtable', function(req, res) {
 					path: '/1/users/lookup.json?screen_name='+name
 				};
 				
-				http.get(options, group()).on('error', function(err) {
-					console.log("ERROR: "+err);
+				http.get(options, function(res) {
+					console.log(res);
+				}).on('error', function(err) {
+					console.log(err);
 				});
 			});
 		},
