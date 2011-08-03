@@ -81,10 +81,8 @@ function runthis() {
 			})
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
 		
-	rt.divframe.append('<div id="rt_close"><img src="'+rt.SERVERURL+'images/X.png" alt="close" /></div>');
-	
-	rt.divframe.append('<div id="rt_close"><img src="'+rt.SERVERURL+'images/X.png" alt="close" /></div>');
-	$("#rt_close").fadeIn().click(function() {
+	rt.divframe.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />');
+	$("#rt_close").fadeTo(400, 1).click(function() {
 		rt.divframe.hide(400);
 	});
 
