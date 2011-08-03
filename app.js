@@ -223,7 +223,7 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
-				var nameArray;
+				var nameArray = new Array();
 				console.log(7);
 				var arr = postContent.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
 				console.log(arr);
