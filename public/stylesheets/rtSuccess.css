@@ -6,11 +6,12 @@ body {
 #success {
 	position: relative;
 	width: 700px;
-	top: 0px;
+	top: 30px;
 	font-family: "Paytone One";
 	font-size: 18px;
 	text-align: center;
 	color: black;
+	margin-bottom: 10px;
 }
 
 #success a {
