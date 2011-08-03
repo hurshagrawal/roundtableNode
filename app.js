@@ -168,7 +168,7 @@ app.get('/createRoundtable', function(req, res) {
 	var newPost = new rt.Post(parseInt(userID), postContent);
 	
 	var newThreadID = ++threadCount;
-	var newThread, userArray;
+	var newThread;
 	
 	
 	step(
@@ -252,8 +252,8 @@ app.get('/createRoundtable', function(req, res) {
 			});
 		},
 		function addUsersToThread(userInfo) {
-				console.log(userInfo);
 				var tempUser;
+				var userArray = new Array();
 				userInfo.forEach(function(userInfo) {
 					var user = JSON.parse(userInfo);
 					if (user instanceof Array) {
@@ -266,9 +266,10 @@ app.get('/createRoundtable', function(req, res) {
 					userArray.push(tempUser);
 					}
 				});
-				this();
+				console.log(userArray);
+				this(userArray);
 		},
-		function addUserArrayToPost() {
+		function addUserArrayToPost(userArray) {
 			console.log(10);
 			client.set('threads:'+newThreadID+':users', userArray, this);
 		},
