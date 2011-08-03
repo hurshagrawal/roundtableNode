@@ -5,7 +5,7 @@
 	height: 400px;
 	width: 700px;
 	z-index: 10000000;
-	background: rgba(0, 0, 0, 0.6) none;
+	background: rgba(100, 100, 100, 0.6) none;
 }
 
 #rt_close {
