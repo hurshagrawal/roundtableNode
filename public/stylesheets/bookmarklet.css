@@ -17,8 +17,8 @@
 #rt_logo {
 	position: relative;
 	width: 260px;
-	top: -200px;
-	left: 200px;
+	top: -150px;
+	left: 400px;
 	font-family: "Paytone One";
 	font-size: 40px;
 	color: #d90303;
@@ -26,7 +26,7 @@
 }
 
 #rt_tweet {
-	top: 20px;
+	top: -200px;
 	margin: 10px;
 }
 
