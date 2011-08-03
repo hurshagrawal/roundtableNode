@@ -182,7 +182,7 @@ function runthis() {
 		return;
 	}
 	
-	rt.boxheight = 400;
+	rt.boxheight = 350;
 	rt.boxwidth = 700;
 	
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
@@ -243,7 +243,7 @@ function runthis() {
 			
 		console.log(rt.SERVERURL+'createRoundtable?'+dataString);
 		
-		$("#rt_post div, #rt_post textarea").fadeOut("fast");
+		$("#rt_post").fadeOut("fast");
 		$("#rt_post").append('<iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString+'" width="100%" height="800"></iframe>').fadeIn("fast");
 	});
 }
