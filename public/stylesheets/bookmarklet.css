@@ -29,7 +29,7 @@
 #rt_tweet {
 	position: relative;
 	top: -175px;
-	margin: 20px;
+	margin: 20px 20px 10px 20px;
 }
 
 #rt_post {
@@ -67,7 +67,7 @@
 #rt_submit {
 	position: relative;
 	top: -170px;
-	margin: 10px 40px 10px 40px;
+	margin: 0px 40px 10px 40px;
 	border: 4px solid black;
 	width: 610px;
 	height: 55px;
