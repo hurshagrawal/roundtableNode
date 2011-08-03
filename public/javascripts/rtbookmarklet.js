@@ -243,7 +243,7 @@ function runthis() {
 			
 		console.log(rt.SERVERURL+'createRoundtable?'+dataString);
 		
-		$("#rt_post").fadeOut("fast");
+		$("#rt_post div, #rt_post textarea").fadeOut("fast");
 		$("#rt_post").append('<iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString+'" width="100%" height="800"></iframe>').fadeIn("fast");
 	});
 }
