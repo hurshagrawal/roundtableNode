@@ -157,7 +157,7 @@ app.get('/user/:id', function(req, res) {
 app.get('createRoundtable', function(req, res) {
 	
 	var userID = req.body.userID;
-	var postContent = decodeURI(req.body.postContent);
+	var postContent = new Buffer(req.body.postContent, 'base64').toString('ascii');
 	
 	var newPostID = ++postCount;
 	var newPost = new rt.Post(parseInt(userID), postContent);
