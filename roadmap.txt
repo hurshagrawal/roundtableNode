@@ -5,6 +5,8 @@ url to authenticate with twitter (TWITAPI)
 		ppl- twitter id, twitter handle, token, posts, name, date/time created
 			users:twitterid -> JSON object with 4 fields
 			users:twitterid:posts -> JSON array with posts
+			
+			twitterID, twitterHandle, accessToken, accessSecret, name, timeCreated
 						
 		posts- id, person, text, date/time created
 			posts:selfid -> JSON object with 3 fields
@@ -13,7 +15,7 @@ url to authenticate with twitter (TWITAPI)
 		threads- id, posts, authorized ids, bitly link, date/time created
 			threads:selfid -> 2 fields (bitly link, date/time)
 			threads:selfid:posts -> array of post ids
-			threads:selfid:authorizedUsers -> array of user IDs
+			threads:selfid:users -> array of OBJECTS (userID + handle)
 			
 			threadCount
 	

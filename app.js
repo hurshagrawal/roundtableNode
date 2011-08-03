@@ -127,10 +127,8 @@ app.get('/authSuccess', function(req, res) {
 	--> gets posts related to that room
 		--> renders view (intricacies with if logged in editable, else viewable)
 
-
-
 */
-app.get('/room/:id', function(req, res) {
+app.get('/roundtable/:id', function(req, res) {
 	step(
 		function getPostsForRoom() {
 			//client.mget("rooms:" + req.params.id, , );
@@ -149,13 +147,124 @@ app.get('/user/:id', function(req, res) {
 	
 });
 
-// BOOKMARKLET ROUTE(S)
+// BOOKMARKLET ROUTE
 
-app.post('createRoom', function(req, res) {
-	//(1) tweets out message
-	//(2) creates room
-	//(3) creates bitly link
-	//(4) sends back ajax response with link
+/*	(1) tweets out message
+	(2) creates room
+	(3) creates bitly link
+	(4) sends back ajax response with link
+*/
+app.post('createRoundtable', function(req, res) {
+	
+	var userID = req.body.userID;
+	var postContent = decodeURI(req.body.postContent);
+	
+	var newPostID = ++postCount;
+	var newPost = new rt.Post(parseInt(userID), postContent);
+	
+	var newThreadID = ++threadCount;
+	var newThread, nameArray, userArray;
+	
+	
+	step(
+		function updatePostCountInDB() {
+			client.set('postCount', postCount, this)
+		},
+		function updateThreadCountInDB(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				client.set('threadCount', threadCount, this);
+			}
+		},
+		function addNewPostToDB(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				client.set('posts:'+newPostID, JSON.stringify(newPost), this);
+			}
+		},
+		function getBitlyLink(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				//PLACEHOLDER
+				newThread = new rt.Thread("NO BITLY LINK YET");
+			}
+		},
+		function addNewThreadToDB(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				client.set('threads:'+newThreadID, JSON.stringify(newThread), this);
+			}
+		},
+		function addNewPostToThread(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				var postArray = [newPost];
+				client.set('threads:'+newThreadID+':posts', JSON.stringify(postArray), this);
+			}
+		},
+		function extractUserListFromContent(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				var arr = postContentstr.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
+				for (var i=1;i<arr.length;i++) {
+					nameArray.push(arr[i].split(" ")[0]);
+				}
+			}
+		},
+		function getUserIDsFromTwitterHandles() {
+			var group = this.group();
+			nameArray.forEach(function(name) {
+				var options = {
+					host: 'api.twitter.com',
+					port: 80,
+					path: '/1/users/lookup.json?screen_name='+name
+				};
+				
+				http.get(options, this).on('error', function(err) {
+					console.log(err);
+				});
+			});
+		},
+		function addUsersToThread(err, userInfo) {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(userInfo);
+				var tempUser;
+				userInfo.forEach(function(userInfo) {
+					var user = JSON.parse(userInfo);
+					if (user instanceof Array) {
+						tempUser = {
+							id: user.id_str,
+							name: user.name,
+							twitterHandle: user.screen_name 
+						};
+					userArray.push(tempUser);
+					}
+				});
+			}
+		},
+		function addUserArrayToPost() {
+			client.set('threads:'+newThreadID+':users', userArray, this);
+		},
+		function returnLinkToBookmarklet(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				var responseString = {
+					url: "/roundtable/"+newThreadID
+				}
+				res.writeHead(200, {'Content-Type':'text/json'});
+				res.end(JSON.stringify(responseString));
+			}
+		}	
+	);
 });
 
 /*
@@ -184,7 +293,7 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 			promise.fail(err);
 			return;
 		} else if (replies[0] === null || DEBUG) { //not found in the database
-			var newUser = new rt.User(twitterData.id_str, twitterData.name, twitterData.screen_name, 
+			var newUser = new rt.User(twitterData.name, twitterData.screen_name, 
 				accessToken, accessTokenSecret);	
 
 			console.log("User id "+twitterData.id_str+" not found. Creating account.");
@@ -208,11 +317,21 @@ rt.findOrCreateUser = function(promise, accessToken, accessTokenSecret, twitterD
 	
 };
 
-rt.User = function(id, name, twitterHandle, accessToken, accessTokenSecret) {
-	this.id = id;
+rt.User = function(name, twitterHandle, accessToken, accessTokenSecret) {
 	this.name = name;
 	this.twitterHandle = twitterHandle;
 	this.accessToken = accessToken;
 	this.accessTokenSecret = accessTokenSecret;
+	this.timeCreated = new Date();
+};
+
+rt.Post = function(creatorID, postContent) {
+	this.creatorID = creatorID;
+	this.timeCreated = new Date();
+	this.postContent = postContent;
+};
+
+rt.Thread = function(bitlyLink) {
+	this.bitlyLink = bitlyLink;
 	this.timeCreated = new Date();
 };
