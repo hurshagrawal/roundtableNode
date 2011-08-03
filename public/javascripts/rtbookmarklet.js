@@ -44,11 +44,11 @@ function runthis() {
 
 	//rt.userID
 
-	//show iframe if already exists
-	rt.iframe = $('#roundtable_div');
-	if (rt.iframe.length) { //if frame exists
+	//show divframe if already exists
+	rt.divframe = $('#roundtable_div');
+	if (rt.divframe.length) { //if frame exists
 		$('#roundtable_div').fadeIn();
-			// if has text selected, copy into iframe
+			// if has text selected, copy into divframe
 		if (rt.t != "") {
 			/*  -------------TODO - change selected text input ----
 			 */
@@ -66,12 +66,12 @@ function runthis() {
 	
 	//append div and div stylesheet to body
 	$("head").append(rt.stylesheet);
-	$("body").append('<div id="roundtable_div"></div>');
+	$("body").append('<div id="rt_wrapper"><div id="roundtable_div"></div></div>');
 	
 	
-	rt.iframe = $("#roundtable_div");
-	rt.iframe.hide();
-	rt.iframe.append(rt.str).fadeIn();
-	rt.iframe.draggable({ opacity: 0.40 });
+	rt.divframe = $("#roundtable_div");
+	rt.divframe.hide();
+	rt.divframe.append(rt.str).fadeIn();
+	rt.divframe.draggable({ opacity: 0.40 });
 
 }
