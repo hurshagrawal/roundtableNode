@@ -94,18 +94,28 @@ function runthis() {
 	rt.divframe.append(rt.str)
 			.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />')
 			.append('<div id="rt_logo">roundtable</div>')
-			.append('<div id="rt_tweet"></div>')
 			.append('<div id="rt_post"></div>')
+			.append('<div id="rt_tweet"></div>')
 			.append('<div id="rt_submit">create a roundtable</div>');
 
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
 	
 	if (rt.t !== "") { //adds quotes around the quote if a string exists
-		rt.t = '  "'+rt.t+'"';
+		rt.t = '"'+rt.t+'"  ';
 	}
 	
-	$('#rt_post textarea').val('@'+rt.t);
+	$('#rt_post textarea').val(rt.t+"@");
+	rt.tweet_textarea = $('#rt_tweet textarea');
+	rt.tweet_textarea.val("(optional)").click(function() {
+		if (rt.tweet_textarea.val() === "(optional)") {
+			rt.tweet_textarea.val("");
+		}
+	}).focusout( function() {
+		if (rt.tweet_textarea.val() === "") {
+			rt.tweet_textarea.val("(optional)");
+		}
+	});
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
