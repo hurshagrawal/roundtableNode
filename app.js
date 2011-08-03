@@ -274,9 +274,9 @@ app.get('/createRoundtable', function(req, res) {
 				var user = JSON.parse(userInfo);
 				if (user instanceof Array) {
 					tempUser = {
-						id: user.id_str,
-						name: user.name,
-						twitterHandle: user.screen_name 
+						id: user[0].id_str,
+						name: user[0].name,
+						twitterHandle: user[0].screen_name 
 					};
 					console.log(9);
 					userArray.push(tempUser);
