@@ -1,10 +1,15 @@
 #success {
+	position: relative;
+	width: 700px;
+	top: 0px;
 	font-family: "Paytone One";
 	font-size: 18px;
 	text-align: center;
 	color: black;
 }
+
 #success a {
+	width: 700px;
 	font-size: 20px;
 	color: #d90303;
 }

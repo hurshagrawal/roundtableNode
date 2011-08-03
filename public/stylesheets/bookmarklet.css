@@ -84,3 +84,9 @@
 	color: black;
 	cursor: pointer;
 }
+
+#rt_post iframe {
+	width: 700px;
+	height: 340px;
+	border-style: none;
+}
