@@ -18,7 +18,7 @@
 	position: relative;
 	width: 260px;
 	top: -140px;
-	left: 470px;
+	left: 450px;
 	font-family: "Paytone One";
 	font-size: 40px;
 	color: #d90303;
@@ -27,11 +27,13 @@
 
 #rt_tweet {
 	position: relative;
-	top: -200px;
+	top: -160px;
 	margin: 10px;
 }
 
 #rt_post {
+	position: relative;
+	top: -160px;
 	margin: 10px;
 }
 
