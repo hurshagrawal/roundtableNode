@@ -23,7 +23,8 @@ body {
 #twitterpost {
 	position: absolute;
 	width: 700px;
-	top: 120px;
+	top: 140px;
+	margin: 20px;
 }
 
 #twitterlabel {
