@@ -222,9 +222,7 @@ app.get('/createRoundtable', function(req, res) {
 				var arr = postContent.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
 				console.log(arr);
 				for (var i=1;i<arr.length;i++) {
-					console.log("i="+i);
 					nameArray.push(arr[i].split(" ")[0]);
-					console.log("get's here");
 				}
 				console.log(nameArray);
 				this(nameArray);
@@ -260,6 +258,7 @@ app.get('/createRoundtable', function(req, res) {
 			});
 		},
 		function addUsersToThread(err, userInfo) {
+			console.log("got here 2");
 			var tempUser;
 			userInfo.forEach(function(userInfo) {
 				var user = JSON.parse(userInfo);
@@ -282,6 +281,9 @@ app.get('/createRoundtable', function(req, res) {
 			for (var i=0;i<userArray.length;i++){
 				nameList += "@" + userArray[i].twitterHandle + " ";
 			}
+			
+			console.log(nameList);
+			
 			if (err) {
 				console.log(err);
 			} else {
