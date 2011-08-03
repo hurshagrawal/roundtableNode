@@ -64,7 +64,7 @@
 	background-color: white;
 }
 
-#rt_submit {
+.rt_submit {
 	position: relative;
 	top: -190px;
 	margin: 0px 150px 10px 150px;
@@ -78,7 +78,7 @@
 	color: #d5d5d5;
 }
 
-#rt_submit:hover {
+.rt_submit:hover {
 	background: #e2e2e2;
 	color: black;
 	cursor: pointer;
