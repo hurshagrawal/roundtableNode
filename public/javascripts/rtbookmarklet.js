@@ -73,7 +73,7 @@ function runthis() {
 	rt.divframe.hide();
 	rt.divframe.append(rt.str);
 	
-	rt.divframe.fadeTo(400, 0.75)
+	rt.divframe.fadeIn())
 			.draggable({ opacity: 0.40 })
 			.css('position', 'fixed')
 			.bind('dragstop', function(event, ui) {
@@ -82,7 +82,7 @@ function runthis() {
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
 		
 	rt.divframe.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />');
-	$("#rt_close").fadeTo(400, 1).click(function() {
+	$("#rt_close").click(function() {
 		rt.divframe.hide(400);
 	});
 
