@@ -93,7 +93,7 @@ function runthis() {
 			.append('<div id="rt_logo">roundtable</div>')
 			.append('<div id="rt_tweet"></div>')
 			.append('<div id="rt_post"></div>')
-			.append('<div id="rt_submit"></div>');
+			.append('<div id="rt_submit">create a roundtable</div>');
 
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
