@@ -237,7 +237,7 @@ app.get('/createRoundtable', function(req, res) {
 			}
 		},
 		function getUserIDsFromTwitterHandles(nameArray) {
-			//var group = this.group();
+			var group = this.group();
 			nameArray.forEach(function(name) {
 				console.log(8+": "+name);
 				var options = {
