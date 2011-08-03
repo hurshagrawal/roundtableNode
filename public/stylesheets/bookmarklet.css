@@ -33,7 +33,7 @@
 
 #rt_post {
 	position: relative;
-	top: -180px;
+	top: -190px;
 	margin: 20px;
 }
 
@@ -66,9 +66,9 @@
 #rt_submit {
 	position: relative;
 	top: -190px;
-	margin: 10px 20px 10px 20px;
+	margin: 10px 40px 10px 40px;
 	border: 4px solid black;
-	width: 650px;
+	width: 610px;
 	height: 55px;
 	font-family: "Paytone One";
 	font-size: 35px;
@@ -80,4 +80,5 @@
 #rt_submit:hover {
 	background: #4b4b4b;
 	color: black;
+	cursor: pointer;
 }
