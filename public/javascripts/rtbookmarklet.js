@@ -150,13 +150,7 @@ function runthis() {
 			
 		console.log(dataString);
 		
-		$.ajax({
-			type: 'POST',
-			url: rt.SERVERURL+'createRoundtable',
-			data: dataString,
-			success: function(data) {
-				console.log(data);
-			}
-		});
+		$("rt_tweet").children().hide();
+		$("rt_tweet").append(<'iframe src="'+rt.SERVERURL+'createRoundtable?'+dataString'" width="100%" height="800"></iframe>');
 	});
 }
