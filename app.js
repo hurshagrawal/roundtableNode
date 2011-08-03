@@ -246,12 +246,12 @@ app.get('/createRoundtable', function(req, res) {
 					path: '/1/users/lookup.json?screen_name='+name
 				};
 				
-				http.get(options, this).on('error', function(err) {
+				http.get(options, group()).on('error', function(err) {
 					console.log(err);
 				});
 			});
 		},
-		function addUsersToThread(err, userInfo) {
+		function addUsersToThread(userInfo) {
 			if (err) {
 				console.log(err);
 			} else {
