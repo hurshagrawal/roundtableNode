@@ -254,7 +254,7 @@ app.get('/createRoundtable', function(req, res) {
 				});	
 			});
 		},
-		function addUsersToThread(userInfo) {
+		function addUsersToThread(err, userInfo) {
 			var tempUser;
 			var userArray = new Array();
 			console.log(userInfo);
