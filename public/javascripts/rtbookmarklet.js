@@ -67,7 +67,8 @@ function runthis() {
 	//append div and div stylesheet to body
 	
 	$("head").append(rt.stylesheet)
-			.append("<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>");
+			.append("<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>")
+			.append("<link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>");
 	$("body").append('<div id="rt_div"></div>');
 	
 	
@@ -79,8 +80,8 @@ function runthis() {
 			.append('<div id="rt_tweet"></div>')
 			.append('<div id="rt_post"></div>');
 
-	$('#rt_tweet').append('<div>Tweet:</div><input type="text">');
-	$('#rt_post').append('<div>Roundtable post:</div><input type="text">');
+	$('#rt_tweet').append('<div class="rt_label">Tweet:</div><input class="rt_input" type="text">');
+	$('#rt_post').append('<div class="rt_label">Roundtable post:</div><input class="rt_input" type="text">');
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
