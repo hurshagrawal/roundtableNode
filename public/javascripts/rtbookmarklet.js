@@ -82,13 +82,13 @@ function runthis() {
 		'stylesheets/bookmarklet.css" type="text/css" media="screen" title="no title" charset="utf-8">';
 	
 	//append div and div stylesheet to body
-	
 	$("head").append(rt.stylesheet)
 			.append("<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>")
 			.append("<link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>");
 	$("body").append('<div id="rt_div"></div>');
 	
 	
+	//create main divs for overlay - logo, close window, and 2 forms
 	rt.divframe = $("#rt_div");
 	rt.divframe.hide();
 	rt.divframe.append(rt.str)
@@ -97,14 +97,14 @@ function runthis() {
 			.append('<div id="rt_post"></div>')
 			.append('<div id="rt_tweet"></div>');
 
-
+	//populate roundtable and tweet divs
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>')
 				.append('<div class="rt_submit" id="rt_subpost">create a roundtable</div>');
 					
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>')
 				.append('<div class="rt_submit" id="rt_subtweet">send tweet</div>');
 
-	
+	//makes textareas fade out when not activated
 	$('#rt_tweet textarea').val("(optional)").click(function() {
 		if ($('#rt_tweet textarea').val() === "(optional)") {
 			$('#rt_tweet textarea').val("").css("color", "black");
@@ -117,6 +117,7 @@ function runthis() {
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
+	//activates div frame after creation
 	rt.divframe.fadeIn()
 			.draggable({ opacity: 0.40 })
 			.css('position', 'fixed')
@@ -124,14 +125,57 @@ function runthis() {
 				$("#rt_div").css('position', 'fixed');
 			})
 		    .css("left", (($(window).width() - rt.boxwidth) / 2) + $(window).scrollLeft() + "px");
-		
+	
+	//close button binding	
 	$("#rt_close").click(function() {
 		$("#rt_div").fadeOut();
 	});
-
+	
+	//put selected string into roundtable text area
 	if (rt.t !== "") { //adds quotes around the quote if a string exists
 		rt.t = '"'+rt.t+'"  ';
 	}
-
+	
+	//focuses on text area
 	$('#rt_post textarea').val(rt.t+"@").focus();
+	
+	//AJAX FUNCTIONS
+	
+	//roundtable submit button
+	$('#rt_subpost').click(function() {
+		//TODO - do stuff with the actual divs
+		
+		var dataString = 'userID=' + rt.userID + '&postContent=' 
+			+ encodeURI($('#rt_post textarea').val());
+			
+		console.log(dataString);
+		
+		$.ajax({
+			type: 'POST',
+			url: '/createRoundtable',
+			data: dataString,
+			success: function(data) {
+				//TO DO = after callback?
+			}
+		});
+	});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
