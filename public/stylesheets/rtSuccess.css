@@ -21,8 +21,9 @@ body {
 }
 
 #twitterpost {
-	position: relative;
-	margin: 20px;
+	position: absolute;
+	width: 700px;
+	top: 120px;
 }
 
 #twitterlabel {
