@@ -101,11 +101,6 @@ function runthis() {
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
 	
-	if (rt.t !== "") { //adds quotes around the quote if a string exists
-		rt.t = '"'+rt.t+'"  ';
-	}
-	
-	$('#rt_post textarea').val(rt.t+"@");
 	rt.tweet_textarea = $('#rt_tweet textarea');
 	rt.tweet_textarea.val("(optional)").click(function() {
 		if (rt.tweet_textarea.val() === "(optional)") {
@@ -133,5 +128,9 @@ function runthis() {
 		rt.divframe.fadeOut();
 	});
 
-	$("#rt_post textarea").focus();
+	if (rt.t !== "") { //adds quotes around the quote if a string exists
+		rt.t = '"'+rt.t+'"  ';
+	}
+
+	$('#rt_post textarea').val(rt.t+"@").focus();
 }
