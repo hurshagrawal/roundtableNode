@@ -282,6 +282,7 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				res.render('rtSuccess', {
+					serverURL: SERVERURL,
 					roundtableURL: SERVERURL+"roundtable/"+newThreadID,
 					userArray: JSON.stringify(userArray)
 				});
