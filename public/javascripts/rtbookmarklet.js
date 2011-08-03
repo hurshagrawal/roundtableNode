@@ -110,10 +110,12 @@ function runthis() {
 	rt.tweet_textarea.val("(optional)").click(function() {
 		if (rt.tweet_textarea.val() === "(optional)") {
 			rt.tweet_textarea.val("");
+			rt.tweet_textarea.css("color", "lightgrey");
 		}
 	}).focusout( function() {
 		if (rt.tweet_textarea.val() === "") {
 			rt.tweet_textarea.val("(optional)");
+			rt.tweet_textarea.css("color", "black");
 		}
 	});
 	
