@@ -11,19 +11,6 @@
 		<link rel="stylesheet" href="<%= serverURL %>stylesheets/rtSuccess.css" type="text/css" media="screen" charset="utf-8">
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
 		<script type="text/javascript" charset="utf-8">
-			$(function() {
-				var userArray = $.parseJSON("<%= userArray %>");
-				console.log(userArray);
-				var handleStr = "";
-				for (var i=0;i<userArray.length;i++) {
-					handleStr += "@" + userArray[i].twitterHandle + " ";
-				}
-				
-				$("#twitterpost textarea").val(handleStr);
-			});
-
-		
-		</script>
 	</head>
 	<body>
 		<div id="success">
@@ -32,7 +19,7 @@
 		</div>
 		<div id="twitterpost">
 			<div id="twitterlabel">Tweet it out!</div>
-			<textarea rows="4"></textarea>
+			<textarea rows="4"><%= nameList %> <%= roundtableURL %></textarea>
 			<div id="twittersubmit">Tweet</div>
 		</div>
 	</body>

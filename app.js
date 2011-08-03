@@ -278,13 +278,17 @@ app.get('/createRoundtable', function(req, res) {
 			client.set('threads:'+newThreadID+':users', JSON.stringify(userArray), this);
 		},
 		function renderPageInBookmarklet(err) {
+			var nameList = "";
+			for (var i=0;i<userArray.length;i++){
+				nameList += "@" + userArray[i].twitterHandle + " ";
+			}
 			if (err) {
 				console.log(err);
 			} else {
 				res.render('rtSuccess', {
 					serverURL: SERVERURL,
 					roundtableURL: SERVERURL+"roundtable/"+newThreadID,
-					userArray: JSON.stringify(userArray)
+					nameList: nameList
 				});
 			}
 		}	
