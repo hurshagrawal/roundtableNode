@@ -23,13 +23,13 @@ body {
 #twitterpost {
 	position: absolute;
 	width: 700px;
-	top: 140px;
+	top: 130px;
 	margin: 20px;
 }
 
 #twitterlabel {
 	font-family: "Paytone One";
-	font-size: 18px;
+	font-size: 22px;
 	color: black;
 }
 
