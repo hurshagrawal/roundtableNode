@@ -247,14 +247,13 @@ app.get('/createRoundtable', function(req, res) {
 				};
 				
 				http.get(options, group()).on('error', function(err) {
-					console.log(err);
+					console.log("ERROR: "+err);
 				});
 			});
 		},
 		function addUsersToThread(userInfo) {
 				console.log(userInfo);
 				var tempUser;
-				userInfo = JSON.parse(userInfo);
 				var userArray = new Array();
 				console.log(userInfo);
 				userInfo.forEach(function(userInfo) {
