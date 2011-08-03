@@ -83,7 +83,7 @@ function runthis() {
 		
 	rt.divframe.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />');
 	$("#rt_close").click(function() {
-		rt.divframe.hide(400);
+		rt.divframe.fadeOut();
 	});
 
 }
