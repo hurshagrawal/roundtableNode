@@ -110,14 +110,14 @@ function runthis() {
 	rt.tweet_textarea.val("(optional)").click(function() {
 		if (rt.tweet_textarea.val() === "(optional)") {
 			rt.tweet_textarea.val("");
-			rt.tweet_textarea.css("color", "lightgrey");
+			rt.tweet_textarea.css("color", "black");
 		}
 	}).focusout( function() {
 		if (rt.tweet_textarea.val() === "") {
 			rt.tweet_textarea.val("(optional)");
-			rt.tweet_textarea.css("color", "black");
+			rt.tweet_textarea.css("color", "lightgrey");
 		}
-	});
+	}).css("color", "lightgrey");
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
