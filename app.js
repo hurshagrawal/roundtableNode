@@ -250,8 +250,9 @@ app.get('/createRoundtable', function(req, res) {
 
 				http.get(options, function(res) {
 					res.setEncoding('utf8');
-					res.on('data', function(data) {
-						groupSlot(null, data);
+					res.on('data', function(chunk) {
+						console.log("CHUNK: "+chunk);
+						groupSlot(null, chunk);
 					});
 				}).on('error', function(err) {
 					console.log(err);
