@@ -245,15 +245,17 @@ app.get('/createRoundtable', function(req, res) {
 					port: 80,
 					path: '/1/users/lookup.json?screen_name='+name
 				};
-				
+
+				var groupSlot = group();
+
 				http.get(options, function(res) {
-					var groupSlot = group();
 					res.setEncoding('utf8');
 					res.on('data', function(data) {
 						groupSlot(null, data);
 					});
 				}).on('error', function(err) {
 					console.log(err);
+					groupSlot(err);
 				});	
 			});
 		},
