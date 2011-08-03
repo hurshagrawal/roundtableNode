@@ -80,4 +80,6 @@ function runthis() {
 			})
 		    .css("left", (($(window).width() - rt.divframe.outerWidth()) / 2) + "px");
 
+	console.log($(window).width());
+	console.log(rt.divframe.outerWidth());
 }
