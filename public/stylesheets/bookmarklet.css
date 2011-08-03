@@ -15,16 +15,16 @@
 	position: absolute;
 	margin: 0px;
 	padding: 0px;
-	left: -30px;
-	top: -30px;
+	left: -50px;
+	top: -50px;
 }
 
 #rt_logo {
 	position: absolute;
 	margin: 0px;
 	padding: 0px;
-	right: 10px;
-	top: 10px;	
+	right: 50px;
+	top: -20px;	
 	width: 260px;
 	font-family: "Paytone One";
 	font-size: 40px;
@@ -42,6 +42,9 @@
 	font-family: "Paytone One";
 	font-size: 18px;
 	color: black;
+	width: 200px;
+	top: 40px;
+	left: 30px;
 
 }
 
