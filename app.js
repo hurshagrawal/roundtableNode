@@ -267,6 +267,7 @@ app.get('/createRoundtable', function(req, res) {
 					userArray.push(tempUser);
 					}
 				});
+				this();
 			}
 		},
 		function addUserArrayToPost() {
