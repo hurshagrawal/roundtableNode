@@ -241,16 +241,18 @@ app.get('/createRoundtable', function(req, res) {
 			nameArray.forEach(function(name) {
 				console.log(8+": "+name);
 				var options = {
+					method: 'GET',
 					host: 'api.twitter.com',
 					port: 80,
 					path: '/1/users/lookup.json?screen_name='+name
 				};
 				
-				http.get(options, function(res) {
+				http.request(options, function(res) {
 					console.log(res);
 				}).on('error', function(err) {
 					console.log(err);
-				});
+				}).end();
+				
 			});
 		}// ,
 		// 		function addUsersToThread(userInfo) {
