@@ -2,8 +2,7 @@
 	border: 12px solid black;
 	position: absolute;
 	top: 0px;
-	margin-left: auto;
-	margin-right: auto;
+	left: 50%;
 	height: 400px;
 	width: 700px;
 	z-index: 10000000;
