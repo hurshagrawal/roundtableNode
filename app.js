@@ -249,11 +249,17 @@ app.get('/createRoundtable', function(req, res) {
 				var groupSlot = group();
 
 				http.get(options, function(res) {
+					var body = "";
 					res.setEncoding('utf8');
 					res.on('data', function(chunk) {
-						console.log("CHUNK: "+chunk);
-						groupSlot(null, chunk);
+						body += chunk;
 					});
+					res.on('end', function() {
+						groupSlot(null, body);
+					})
+					res.on('close', function() {
+						groupSlot(null, body);
+					})
 				}).on('error', function(err) {
 					console.log(err);
 					groupSlot(err);
