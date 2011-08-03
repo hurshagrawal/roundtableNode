@@ -260,41 +260,39 @@ app.get('/createRoundtable', function(req, res) {
 			});
 		},
 		function addUsersToThread(err, userInfo) {
-			console.log("err:"+err);
-			console.log(userInfo);
-			// var tempUser;
-			// 	var userArray = new Array();
-			// 	userInfo.forEach(function(userInfo) {
-			// 		var user = JSON.parse(userInfo);
-			// 		if (user instanceof Array) {
-			// 			tempUser = {
-			// 				id: user.id_str,
-			// 				name: user.name,
-			// 				twitterHandle: user.screen_name 
-			// 			};
-			// 			console.log(9);
-			// 			userArray.push(tempUser);
-			// 		}
-			// 	});
-			// 	console.log(userArray);
-			// 	this(userArray);
-		}// ,
-		// 		function addUserArrayToPost(userArray) {
-		// 			console.log(10);
-		// 			client.set('threads:'+newThreadID+':users', userArray, this);
-		// 		},
-		// 		function returnLinkToBookmarklet(err) {
-		// 			if (err) {
-		// 				console.log(err);
-		// 			} else {
-		// 				console.log(11);
-		// 				var responseString = {
-		// 					url: "/roundtable/"+newThreadID
-		// 				}
-		// 				res.writeHead(200, {'Content-Type':'text/json'});
-		// 				res.end(JSON.stringify(responseString));
-		// 			}
-		// 		}	
+			var tempUser;
+			var userArray = new Array();
+			userInfo.forEach(function(userInfo) {
+				var user = JSON.parse(userInfo);
+				if (user instanceof Array) {
+					tempUser = {
+						id: user.id_str,
+						name: user.name,
+						twitterHandle: user.screen_name 
+					};
+					console.log(9);
+					userArray.push(tempUser);
+				}
+			});
+			console.log(userArray);
+			this(userArray);
+		},
+		function addUserArrayToPost(userArray) {
+			console.log(10);
+			client.set('threads:'+newThreadID+':users', userArray, this);
+		},
+		function returnLinkToBookmarklet(err) {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(11);
+				var responseString = {
+					url: "/roundtable/"+newThreadID
+				}
+				res.writeHead(200, {'Content-Type':'text/json'});
+				res.end(JSON.stringify(responseString));
+			}
+		}	
 	);
 });
 
