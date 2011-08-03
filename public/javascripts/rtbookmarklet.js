@@ -72,9 +72,9 @@ function runthis() {
 	rt.divframe = $("#roundtable_div");
 	rt.divframe.hide();
 	rt.divframe.append(rt.str)
-	rt.divframe.fadeIn();
-			.draggable({ opacity: 0.40 });
-			.css('position', 'absolute');
+	rt.divframe.fadeIn()
+			.draggable({ opacity: 0.40 })
+			.css('position', 'absolute')
 			.bind('dragstop', function(event, ui) {
 				rt.divframe.css('position', 'absolute');
 			});
