@@ -248,17 +248,16 @@ app.get('/createRoundtable', function(req, res) {
 				
 				http.get(options, function(res) {
 					res.setEncoding('utf8');
-					res.on('data', function(data) {
-						group();
-					});
+					res.on('data', group());
 				}).on('error', function(err) {
 					console.log(err);
 				});	
 			});
 		},
-		function addUsersToThread(err, userInfo) {
+		function addUsersToThread(err, userInfo, otherthings) {
 			console.log("err:"+err);
 			console.log("UINFO: "+userInfo);
+			console.log(otherthings);
 			// var tempUser;
 			// 	var userArray = new Array();
 			// 	userInfo.forEach(function(userInfo) {
