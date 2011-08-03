@@ -248,7 +248,9 @@ app.get('/createRoundtable', function(req, res) {
 				};
 				
 				http.request(options, function(res) {
-					console.log(res);
+					res.on('data', function(chunk) {
+						console.log(chunk);
+					});
 				}).on('error', function(err) {
 					console.log(err);
 				}).end();
