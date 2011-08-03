@@ -154,7 +154,7 @@ app.get('/user/:id', function(req, res) {
 	(3) creates bitly link
 	(4) sends back ajax response with link
 */
-app.get('createRoundtable', function(req, res) {
+app.get('/createRoundtable', function(req, res) {
 	
 	var userID = req.body.userID;
 	var postContent = new Buffer(req.body.postContent, 'base64').toString('ascii');
