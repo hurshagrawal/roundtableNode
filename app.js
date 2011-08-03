@@ -160,9 +160,9 @@ app.get('/createRoundtable', function(req, res) {
 	var urlParams = url.parse(req.url, true);
 	console.log(urlParams);
 	
-	var userID = urlParams.userID;
+	var userID = urlParams.query.userID;
 	
-	var postContent = new Buffer(urlParams.postContent, 'base64').toString('ascii');
+	var postContent = new Buffer(urlParams.query.postContent, 'base64').toString('ascii');
 	console.log(postContent);
 	
 	var newPostID = ++postCount;
