@@ -173,14 +173,12 @@ app.get('/createRoundtable', function(req, res) {
 	
 	step(
 		function updatePostCountInDB() {
-			console.log(1);
 			client.set('postCount', postCount, this)
 		},
 		function updateThreadCountInDB(err) {
 			if (err) {
 				console.log(err);
 			} else {
-				console.log(2);
 				client.set('threadCount', threadCount, this);
 			}
 		},
@@ -188,7 +186,6 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
-				console.log(3);
 				client.set('posts:'+newPostID, JSON.stringify(newPost), this);
 			}
 		},
@@ -197,7 +194,6 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				//PLACEHOLDER
-				console.log(4);
 				newThread = new rt.Thread("NO BITLY LINK YET");
 				this();
 			}
@@ -206,7 +202,6 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
-				console.log(5);
 				client.set('threads:'+newThreadID, JSON.stringify(newThread), this);
 			}
 		},
@@ -214,7 +209,6 @@ app.get('/createRoundtable', function(req, res) {
 			if (err) {
 				console.log(err);
 			} else {
-				console.log(6);
 				var postArray = [newPost];
 				client.set('threads:'+newThreadID+':posts', JSON.stringify(postArray), this);
 			}
@@ -224,7 +218,6 @@ app.get('/createRoundtable', function(req, res) {
 				console.log(err);
 			} else {
 				var nameArray = new Array();
-				console.log(7);
 				var arr = postContent.replace(/^\s*/, "").replace(/\s*$/, "").replace(/\s+/gi, " ").split("@");
 				console.log(arr);
 				for (var i=1;i<arr.length;i++) {
@@ -239,7 +232,6 @@ app.get('/createRoundtable', function(req, res) {
 		function getUserIDsFromTwitterHandles(nameArray) {
 			var group = this.group();
 			nameArray.forEach(function(name) {
-				console.log(8+": "+name);
 				var options = {
 					host: 'api.twitter.com',
 					port: 80,
@@ -269,7 +261,6 @@ app.get('/createRoundtable', function(req, res) {
 		function addUsersToThread(err, userInfo) {
 			var tempUser;
 			var userArray = new Array();
-			console.log(userInfo);
 			userInfo.forEach(function(userInfo) {
 				var user = JSON.parse(userInfo);
 				if (user instanceof Array) {
@@ -278,27 +269,21 @@ app.get('/createRoundtable', function(req, res) {
 						name: user[0].name,
 						twitterHandle: user[0].screen_name 
 					};
-					console.log(9);
 					userArray.push(tempUser);
 				}
 			});
-			console.log(userArray);
 			this(userArray);
 		},
 		function addUserArrayToPost(userArray) {
-			console.log(10);
 			client.set('threads:'+newThreadID+':users', JSON.stringify(userArray), this);
 		},
-		function returnLinkToBookmarklet(err) {
+		function renderPageInBookmarklet(err) {
 			if (err) {
 				console.log(err);
 			} else {
-				console.log(11);
-				var responseString = {
-					url: "/roundtable/"+newThreadID
-				}
-				res.writeHead(200, {'Content-Type':'text/json'});
-				res.end(JSON.stringify(responseString));
+				res.render('/rtSuccess', {
+					roundtableURL: SERVERURL+"roundtable/"+newThreadID
+				});
 			}
 		}	
 	);
