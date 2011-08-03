@@ -248,6 +248,7 @@ app.get('/createRoundtable', function(req, res) {
 				};
 				
 				http.request(options, function(res) {
+					res.setEncoding('utf8');
 					res.on('data', function(chunk) {
 						console.log(chunk);
 					});
