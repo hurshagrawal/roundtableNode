@@ -80,8 +80,8 @@ function runthis() {
 			.append('<div id="rt_tweet"></div>')
 			.append('<div id="rt_post"></div>');
 
-	$('#rt_tweet').append('<div class="rt_label">Tweet:</div><input class="rt_input" type="text">');
-	$('#rt_post').append('<div class="rt_label">Roundtable post:</div><input class="rt_input" type="text">');
+	$('#rt_tweet').append('<div class="rt_label">Tweet:</div><textarea class="rt_input" rows="3">');
+	$('#rt_post').append('<div class="rt_label">Roundtable post:</div><textarea class="rt_input" rows="8">');
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
