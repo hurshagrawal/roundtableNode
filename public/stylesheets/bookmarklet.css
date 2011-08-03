@@ -40,6 +40,7 @@
 .rt_label {
 	font-family: "Paytone One";
 	font-size: 18px;
+	color: black;
 }
 
 .rt_input {
@@ -57,7 +58,10 @@
 }
 
 #rt_submit {
+	border: 8px solid black;
 	width: 650px;
+	height: 15px;
 	font-family: "Paytone One";
-	
+	background: white;
+	color: black;
 }
