@@ -15,8 +15,8 @@
 	position: absolute;
 	margin: 0px;
 	padding: 0px;
-	left: -10px;
-	top: -10px;
+	left: -30px;
+	top: -30px;
 }
 
 #rt_logo {
@@ -50,8 +50,8 @@
 	margin: 0px;
 	padding: 0px;
 	width: 645px;
-	top: 40px;
-	left: 22px;
+	top: 60px;
+	left: 20px;
 	border: 4px solid black;
 	background-color: #eeeeee;
 	padding: 5px;
