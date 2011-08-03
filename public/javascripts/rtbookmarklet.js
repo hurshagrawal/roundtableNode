@@ -27,19 +27,19 @@ function checkForJQ_UI() {
 }
 
 function runthis() {
-	new function($) {
-	  $.fn.setCursorPosition = function(pos) {
-	    if ($(this).get(0).setSelectionRange) {
-	      $(this).get(0).setSelectionRange(pos, pos);
-	    } else if ($(this).get(0).createTextRange) {
-	      var range = $(this).get(0).createTextRange();
-	      range.collapse(true);
-	      range.moveEnd('character', pos);
-	      range.moveStart('character', pos);
-	      range.select();
-	    }
-	  }
-	}(jQuery);
+	// new function($) {
+	//   $.fn.setCursorPosition = function(pos) {
+	//     if ($(this).get(0).setSelectionRange) {
+	//       $(this).get(0).setSelectionRange(pos, pos);
+	//     } else if ($(this).get(0).createTextRange) {
+	//       var range = $(this).get(0).createTextRange();
+	//       range.collapse(true);
+	//       range.moveEnd('character', pos);
+	//       range.moveStart('character', pos);
+	//       range.select();
+	//     }
+	//   }
+	// }(jQuery);
 		
 	//get selected text
 	function getSelectedText(){ 
@@ -98,7 +98,11 @@ function runthis() {
 	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>');
 	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>');
 	
-	$('#rt_post textarea').val('@  "'+rt.t+'"').focus().setCursorPosition(1);
+	if (rt.t !== "") { //adds quotes around the quote if a string exists
+		rt.t = '  "'+rt.t+'"';
+	}
+	
+	$('#rt_post textarea').val('@'+rt.t);
 	
 	//TODO - properly format quoted. RESIZE the box.
 	
