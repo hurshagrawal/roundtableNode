@@ -182,7 +182,7 @@ function runthis() {
 		return;
 	}
 	
-	rt.boxheight = 500;
+	rt.boxheight = 400;
 	rt.boxwidth = 700;
 	
 	rt.stylesheet = '<link rel="stylesheet" href="'+ rt.SERVERURL + 
@@ -202,25 +202,11 @@ function runthis() {
 			.append('<img id="rt_close" src="'+rt.SERVERURL+'images/X.png" alt="Close" />')
 			.append('<div id="rt_logo">roundtable</div>')
 			.append('<div id="rt_post"></div>')
-			.append('<div id="rt_tweet"></div>');
 
-	//populate roundtable and tweet divs
-	$('#rt_post').append('<div class="rt_label">roundtable post</div><textarea class="rt_input" rows="9"></textarea>')
-				.append('<div class="rt_submit" id="rt_subpost">create a roundtable</div>');
-					
-	$('#rt_tweet').append('<div class="rt_label">tweet</div><textarea class="rt_input" rows="3"></textarea>')
-				.append('<div class="rt_submit" id="rt_subtweet">send tweet</div>');
+	//populate roundtable div
+	$('#rt_post').append('<div id="rt_label">roundtable post</div><textarea id="rt_input" rows="12"></textarea>')
+				.append('<div id="rt_submit">create a roundtable</div>');
 
-	//makes textareas fade out when not activated
-	$('#rt_tweet textarea').val("(optional)").click(function() {
-		if ($('#rt_tweet textarea').val() === "(optional)") {
-			$('#rt_tweet textarea').val("").css("color", "black");
-		}
-	}).focusout( function() {
-		if ($('#rt_tweet textarea').val() === "") {
-			$('#rt_tweet textarea').val("(optional)").css("color", "grey");
-		}
-	}).css("color", "grey");
 	
 	//TODO - properly format quoted. RESIZE the box.
 	

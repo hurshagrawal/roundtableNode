@@ -2,7 +2,7 @@
 	border: 12px solid black;
 	position: fixed;
 	top: 50px;
-	height: 500px;
+	height: 400px;
 	width: 700px;
 	z-index: 10000000;
 	background: rgba(255, 255, 255, 0.6) none;
@@ -26,43 +26,27 @@
 	margin: 10px;
 }
 
-#rt_tweet {
-	position: relative;
-	top: -185px;
-	margin: 20px 20px 10px 20px;
-}
-
 #rt_post {
 	position: relative;
 	top: -175px;
 	margin: 20px;
 }
 
-.rt_label {
+#rt_label {
 	font-family: "Paytone One";
 	font-size: 18px;
 	color: black;
 }
 
-.rt_input {
+#rt_input {
 	width: 645px;
-	border: 4px solid #2d2d2d;
+	border: 4px solid black;
 	background-color: #eeeeee;
 	padding: 4px;
 	font-size: 16px;
 	font-family: "Rosario";
 }
 
-.rt_input:hover {
-	border: 4px solid #2d2d2d;
-	background-color: #eeeeee;
-}
-
-
-.rt_input:focus {
-	border: 4px solid black;
-	background-color: white;
-}
 
 .rt_submit {
 	position: relative;
@@ -81,12 +65,4 @@
 	background: #e2e2e2;
 	color: black;
 	cursor: pointer;
-}
-
-#rt_subtweet {
-	font-size: 25px;
-	height: 35px;
-	width: 320px;
-	margin: 0px 160px 10px 160px;
-	
 }
