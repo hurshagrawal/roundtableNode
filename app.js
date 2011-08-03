@@ -199,6 +199,7 @@ app.get('/createRoundtable', function(req, res) {
 				//PLACEHOLDER
 				console.log(4);
 				newThread = new rt.Thread("NO BITLY LINK YET");
+				this();
 			}
 		},
 		function addNewThreadToDB(err) {
