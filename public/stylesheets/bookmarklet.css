@@ -71,6 +71,8 @@
 	width: 650px;
 	height: 40px;
 	font-family: "Paytone One";
+	font-size: 35px;
+	text-align: center;
 	background: #353535;
 	color: #d5d5d5;
 }
@@ -78,9 +80,4 @@
 #rt_submit:hover {
 	background: #4b4b4b;
 	color: black;
-}
-
-#rt_submit:active {
-	background: #e1e1e1;
-	color: #272727;
 }
