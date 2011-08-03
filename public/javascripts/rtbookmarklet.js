@@ -53,7 +53,7 @@ function runthis() {
 	}
 	
 	//encode selected text and put in URL
-	rt.t = getSelectedText().replace(/\s+/gi);
+	rt.t = getSelectedText().replace(/\s+/gi, " ");
 	rt.t = $.trim(rt.t);	
 
 	//rt.userID
@@ -64,8 +64,11 @@ function runthis() {
 		$('#rt_div').fadeIn();
 			// if has text selected, copy into divframe
 		if (rt.t != "") {
-			/*  -------------TODO - change selected text input ----
-			 */
+			if (rt.t !== "") { //adds quotes around the quote if a string exists
+				rt.t = '  "'+rt.t+'"';
+			}
+
+			$('#rt_post textarea').val('@'+rt.t);
 		} else {
 			// want to set focus back to that item but can't - access denied
 		}
@@ -118,4 +121,5 @@ function runthis() {
 		rt.divframe.fadeOut();
 	});
 
+	$("#rt_post textarea").focus();
 }
