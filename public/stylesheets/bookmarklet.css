@@ -13,12 +13,16 @@
 
 #rt_close {
 	position: absolute;
-	left: 10px;
-	top: 10px;
+	margin: 0px;
+	padding: 0px;
+	left: -10px;
+	top: -10px;
 }
 
 #rt_logo {
 	position: absolute;
+	margin: 0px;
+	padding: 0px;
 	right: 10px;
 	top: 10px;	
 	width: 260px;
@@ -43,7 +47,10 @@
 
 #rt_post textarea {
 	position: absolute;
-	bottom: 20px;
+	margin: 0px;
+	padding: 0px;
+	width: 645px;
+	top: 20px;
 	left: 27px;
 	border: 4px solid black;
 	background-color: #eeeeee;
@@ -55,7 +62,7 @@
 
 #rt_submit {
 	position: absolute;
-	top: -20px;
+	top: 305px;
 	left: 150px;
 	border: 4px solid black;
 	width: 400px;
