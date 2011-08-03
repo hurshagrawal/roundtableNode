@@ -15,8 +15,8 @@
 }
 
 #rt_logo {
-	top: -100px;
-	margin-left: auto;
+	top: 100px;
+	margin-right: auto;
 	font-family: "Paytone One";
 	font-size: 40px;
 	color: #d90303;
