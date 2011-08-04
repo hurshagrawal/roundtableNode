@@ -46,3 +46,4 @@ BUGS?
 -check the steps
 -moving down on page
 -OWN TWITTER should be added automatically
+-post records have SHITTONS of empty fields
